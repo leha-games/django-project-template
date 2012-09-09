@@ -1,0 +1,7 @@
+Django
+PIL
+South
+django-autoslug-field
+easy-thumbnails
+pytils
+#MySQL-python

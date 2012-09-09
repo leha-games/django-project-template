@@ -1,0 +1,29 @@
+html {
+	overflow-y: scroll;	/* fixing "jump horizontally" effect */
+}
+.hide {
+	display: none;
+}
+.clear {
+	clear: both;
+}
+input, select, button{
+    font-family: inherit;
+    font-size: inherit;
+}
+
+/* Clearfix. For modern browsers */
+.clearfix:before,
+.clearfix:after {
+    content:"";
+    display:table;
+}
+
+.clearfix:after {
+    clear:both;
+}
+
+/* Clearfix. For IE 6/7 (trigger hasLayout) */
+.clearfix {
+    *zoom:1;
+}
