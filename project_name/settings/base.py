@@ -106,6 +106,8 @@ TEMPLATE_DIRS = (
 )
 
 INSTALLED_APPS = (
+
+    # Django contrib apps
     'django.contrib.auth',
     'django.contrib.contenttypes',
     'django.contrib.sessions',
@@ -115,11 +117,18 @@ INSTALLED_APPS = (
     'django.contrib.admin',
     'django.contrib.flatpages',
 
-
+    # Third-party apps, patches, fixes
     'pytils',
     'django_autoslug',
     'easy_thumbnails',
+
+    # Database migrations
     'south',
+
+    # Application base, containing global templates.
+    '{{ project_name }}.base',
+
+    # Local apps, referenced via {{ project_name }}.appname
 
 )
 
