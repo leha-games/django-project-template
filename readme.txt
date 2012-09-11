@@ -9,3 +9,4 @@ python manage.py syncdb
 python manage.py migrate
 python manage.py runserver
 git init
+#Enter the admin panel and set django.contrib.sites site domain and name
