@@ -1,1 +1,2 @@
-""" Basic models, such as user profile """
+# -*- coding: utf-8 -*-
+#from django.db import models
