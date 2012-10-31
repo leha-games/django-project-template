@@ -9,3 +9,4 @@ pip install mysql-python
 python manage.py syncdb
 python manage.py migrate
 python manage.py collectstatic
+
