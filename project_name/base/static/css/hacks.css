@@ -10,6 +10,7 @@ html {
 input, select, button{
     font-family: inherit;
     font-size: inherit;
+    color: inherit;
 }
 
 /* Clearfix. For modern browsers */
