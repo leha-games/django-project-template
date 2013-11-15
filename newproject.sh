@@ -8,7 +8,7 @@ django-admin.py startproject --template https://bitbucket.org/grialexey/django-p
 cd $1
 pip install -r requirements.txt
 pip freeze > requirements.txt
-cp $1/settings/local-dev.py $1/settings/local.py
+cp $1/settings/local-development.py $1/settings/local.py
 python manage.py syncdb
 python manage.py migrate
 #python manage.py runserver
