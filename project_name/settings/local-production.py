@@ -3,11 +3,12 @@ This is an example settings/local.py file.
 These settings overrides what's in settings/base.py
 """
 
-DEBUG = TEMPLATE_DEBUG = THUMBNAIL_DEBUG = False
+# SECURITY WARNING: don't run with debug turned on in production!
+DEBUG = False
 
-# Is this a development instance? Set this to True on development/master
-# instances and False on stage/prod.
-DEV = False
+TEMPLATE_DEBUG = False
+
+ALLOWED_HOSTS = []
 
 
 ADMINS = (
@@ -31,27 +32,57 @@ DATABASES = {
 
 
 
-
 # Absolute filesystem path to the directory that will hold user-uploaded files.
 # Example: "/home/media/media.lawrence.com/media/"
-# MEDIA_ROOT = '/home/vhosts/rafata.ru/httpdocs/media/trio'
+MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 
 
 # URL that handles the media served from MEDIA_ROOT. Make sure to use a
 # trailing slash.
 # Examples: "http://media.lawrence.com/media/", "http://example.com/media/"
-# MEDIA_URL = '%s/media/trio/' % BASE_URL
+MEDIA_URL = '/media/'
 
 
 # Absolute path to the directory static files should be collected to.
 # Don't put anything in this directory yourself; store your static files
 # in apps' "static/" subdirectories and in STATICFILES_DIRS.
 # Example: "/home/media/media.lawrence.com/static/"
-# STATIC_ROOT = ''
+STATIC_ROOT = os.path.join(BASE_DIR, 'static')
 
 
 # URL prefix for static files.
 # Example: "http://media.lawrence.com/static/"
-# STATIC_URL = '%s/static/trio/' % BASE_URL
+STATIC_URL = '/static/'
 
 
+# A sample logging configuration. The only tangible logging
+# performed by this configuration is to send an email to
+# the site admins on every HTTP 500 error when DEBUG=False.
+# See http://docs.djangoproject.com/en/dev/topics/logging for
+# more details on how to customize your logging configuration.
+LOGGING = {
+    'version': 1,
+    'disable_existing_loggers': False,
+    'filters': {
+        'require_debug_false': {
+            '()': 'django.utils.log.RequireDebugFalse'
+        }
+    },
+    'handlers': {
+        'mail_admins': {
+            'level': 'ERROR',
+            'filters': ['require_debug_false'],
+            'class': 'django.utils.log.AdminEmailHandler'
+        }
+    },
+    'loggers': {
+        'django.request': {
+            'handlers': ['mail_admins'],
+            'level': 'ERROR',
+            'propagate': True,
+        },
+    }
+}
+
+
+# Third-party apps settings

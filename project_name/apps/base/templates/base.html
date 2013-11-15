@@ -1,0 +1,28 @@
+<!doctype html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0; maximum-scale=1.0;">      
+    <title>{% block pagetitle %}{% if page_title %}{{ page_title }}. {% endif %}{% endblock %}Название сайта</title>
+    {% load staticfiles %}
+    <link rel="shortcut icon" href="{% static "dist/img/favicon.ico" %}" type="image/x-icon">
+    <meta name="description" content="" />
+    <meta name="keywords" content="" />
+
+    <link rel="stylesheet" href="{% static "dist/css/global.css" %}"/>
+    {% block extrastyles %}{% endblock %}
+
+    <script type="text/javascript" src="{% static "dist/js/project_name.min.js" %}"></script>
+    {% block extrascripts %}{% endblock %}
+
+    {% block extrahead %}{% endblock %}
+</head>
+<body class="page">
+    {% block body %}
+    {% endblock %}
+
+    {% if not debug %}
+        {% comment %} Analytics {% endcomment %}
+    {% endif %}
+</body>
+</html>
