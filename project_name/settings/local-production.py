@@ -2,6 +2,10 @@
 This is an example settings/local.py file.
 These settings overrides what's in settings/base.py
 """
+# Build paths inside the project like this: os.path.join(BASE_DIR, ...)
+import os
+from .base import BASE_DIR
+
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = False
