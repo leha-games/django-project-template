@@ -10,7 +10,7 @@ BASE_DIR = os.path.dirname(os.path.dirname(__file__))
 
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = '{{ secret_key }}'
+SECRET_KEY = os.environ['SECRET_KEY']
 
 
 # Application definition
@@ -76,14 +76,6 @@ STATIC_URL = '/static/'
 
 
 # Third-party apps settings
-
-# django-pipeline
-
-STATICFILES_STORAGE = 'pipeline.storage.PipelineCachedStorage'
-
-PIPELINE_COMPILERS = (
-    'pipeline.compilers.stylus.StylusCompiler',
-)
 
 # easy-thumbnails
 THUMBNAIL_SUBDIR = 'thumbs'
