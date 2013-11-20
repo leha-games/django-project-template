@@ -6,7 +6,7 @@ admin.autodiscover()
 
 
 urlpatterns = patterns('',
-    (r'', include('{{ project_name }}.base.urls')),
+    (r'', include('{{ project_name }}.apps.base.urls')),
     (r'^{{ project_name }}admin/', include(admin.site.urls)),
 )
 

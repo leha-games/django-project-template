@@ -32,7 +32,7 @@ INSTALLED_APPS = (
     'south',
 
     # Application base, containing global templates.
-    '{{ project_name }}.base',
+    '{{ project_name }}.apps.base',
 
     # Local apps, referenced via {{ project_name }}.appname
 
