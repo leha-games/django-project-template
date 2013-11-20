@@ -1,6 +1,4 @@
-"""urlconf for the base application"""
-
-from django.conf.urls.defaults import url, patterns
+from django.conf.urls import url, patterns
 
 
 urlpatterns = patterns('{{ project_name}}.apps.base.views',
