@@ -81,6 +81,11 @@ def make_virtual_env(project_name):
 		# todo: --no-site-packages optional
 		local("mkvirtualenv --no-site-packages %s" % get_virtualenv_name(project_name))
 
+def create_database(project_name):
+	make_db_dir(project_name)
+	django_syncdb(project_name)
+	django_migrate(project_name)
+
 def new_project(project_name):
 	make_virtual_env(project_name)
 	pip_install_package(project_name, "Django")
@@ -88,8 +93,6 @@ def new_project(project_name):
 	pip_install_requirements(project_name)
 	pip_freeze_requirements(project_name)
 	django_set_settings(project_name, "development")
-	make_db_dir(project_name)
-	django_syncdb(project_name)
-	django_migrate(project_name)
+	create_database(project_name)
 	make_project_docs_dir(project_name)
 	git_init(project_name)
