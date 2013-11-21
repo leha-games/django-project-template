@@ -4,6 +4,13 @@
 *.swo
 *.swp
 *.swn
+*.seed
+*.log
+*.csv
+*.dat
+*.out
+*.pid
+*.gz
 
 # Directories #
 ###############
@@ -13,6 +20,11 @@ project-docs/
 db/
 media/*
 static/*
+node_modules
+pids
+logs
+results
+lib-cov
 
 # Specific files #
 ##################
