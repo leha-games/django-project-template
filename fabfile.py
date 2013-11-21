@@ -59,6 +59,19 @@ def git_init(project_name):
 	with project_root_dir(project_name):
 		local("git init")
 
+def git_add_all(project_name):
+	with project_root_dir(project_name):
+		local("git add .")
+
+def git_commit(project_name, commit_message):
+	with project_root_dir(project_name):
+		local("git commit -m '%s'" % commit_message)
+
+def git_initialization(project_name):
+	git_init(project_name)
+	git_add_all(project_name)
+	git_commit(project_name, 'Initial commit')
+
 def pip_install_requirements(project_name, requirements_file="requirements.txt"):
 	with project_root_dir(project_name), virtualenv(project_name):
 		local("pip install -r %s" % requirements_file)
@@ -95,4 +108,4 @@ def new_project(project_name):
 	django_set_settings(project_name, "development")
 	create_database(project_name)
 	make_project_docs_dir(project_name)
-	git_init(project_name)
+	git_initialization(project_name)
