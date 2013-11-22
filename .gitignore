@@ -20,11 +20,6 @@ project-docs/
 db/
 media/*
 static/*
-node_modules
-pids
-logs
-results
-lib-cov
 
 # Specific files #
 ##################
