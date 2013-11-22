@@ -67,10 +67,15 @@ def git_commit(project_name, commit_message):
 	with project_root_dir(project_name):
 		local("git commit -m '%s'" % commit_message)
 
+def git_add_tag(project_name, annotated_tag, message):
+	with project_root_dir(project_name):
+		local("git tag -a '%s' -m '%s'" % (annotated_tag, message))
+
 def git_initialization(project_name):
 	git_init(project_name)
 	git_add_all(project_name)
 	git_commit(project_name, 'Initial commit')
+	git_add_tag(project_name, '0.1.0', 'Version 0.1.0')
 
 def pip_install_requirements(project_name, requirements_file="requirements.txt"):
 	with project_root_dir(project_name), virtualenv(project_name):
