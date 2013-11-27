@@ -27,7 +27,7 @@ module.exports = function(grunt) {
                     compress: false
                 },
                 files: {
-                    'dist/css/global.css': 'css/global.styl'
+                    'dist/css/global.css': 'styl/global.styl'
                 }
             }
         },

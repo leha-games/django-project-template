@@ -49,6 +49,8 @@ MIDDLEWARE_CLASSES = (
 
 TEMPLATE_DIRS = [os.path.join(BASE_DIR, 'templates')]
 
+STATICFILES_DIRS = (os.path.join(BASE_DIR, 'static'), )
+
 ROOT_URLCONF = '{{ project_name }}.urls'
 
 WSGI_APPLICATION = '{{ project_name }}.wsgi.application'
