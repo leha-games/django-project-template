@@ -24,7 +24,7 @@ static/*
 # Specific files #
 ##################
 */settings/local.py
-secret_key.txt
+secret_key.py
 
 # OS generated files #
 ######################

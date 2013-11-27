@@ -92,7 +92,7 @@ def pip_install_package(project_name, package_name):
 def django_start_project(project_name, project_template="https://bitbucket.org/grialexey/django-project-template/get/master.zip"):		
 	with projects_dir(), virtualenv(project_name):
 		# todo: if no template (template in constraints)
-		local("django-admin.py startproject --extension=py,txt --template %s %s" % (project_template, project_name))
+		local("django-admin.py startproject --template %s %s" % (project_template, project_name))
 
 def make_virtual_env(project_name):
 	with profile():
