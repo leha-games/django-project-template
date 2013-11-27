@@ -8,16 +8,16 @@ module.exports = function(grunt) {
             },
             dist: {
                 src: ['js/jquery-2.0.3.min.js', 'js/script.js'],
-                dest: 'dist/js/<%= pkg.name %>.js'
+                dest: 'dist/js/global.js'
             }
         },
         uglify: {
             options: {
-                banner: '/*! <%= pkg.name %> <%= grunt.template.today("dd-mm-yyyy") %> */\n'
+                banner: '/*! <%= grunt.template.today("dd-mm-yyyy") %> */\n'
             },
             dist: {
                 files: {
-                    'dist/js/<%= pkg.name %>.min.js': ['<%= concat.dist.dest %>']
+                    'dist/js/global.min.js': ['<%= concat.dist.dest %>']
                 }
             }
         },
