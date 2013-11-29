@@ -7,11 +7,6 @@ import os
 from .base import BASE_DIR
 
 
-# SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
-
-TEMPLATE_DEBUG = True
-
 INTERNAL_IPS = ('127.0.0.1')
 
 

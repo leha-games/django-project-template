@@ -9,11 +9,13 @@ import os
 BASE_DIR = os.path.dirname(os.path.dirname(__file__))
 
 
-# SECURITY WARNING: keep the secret key used in production secret!
+DEBUG = bool(os.environ.get('DJANGO_DEBUG', ''))
+
+TEMPLATE_DEBUG = DEBUG
+
+
 SECRET_KEY = os.environ['SECRET_KEY']
 
-
-# Application definition
 
 INSTALLED_APPS = (
     # Django contrib apps
