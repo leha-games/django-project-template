@@ -4,8 +4,8 @@ django-admin.py startproject project-name --template=https://bitbucket.org/grial
 
 Starting development
 --------------------
-0. Don't forget to install vagrant plugins:
-   `vagrant plugin install vagrant-cachier`
+0. Don't forget to install vagrant plugins:  
+   `vagrant plugin install vagrant-cachier`  
    `vagrant plugin install vagrant-vbguest`
    And download VBoxGuestAdditions.iso for your version of VirtualBox
 1. Switch to project's directory
@@ -20,11 +20,11 @@ Starting development
 6. `/var/webapps/engus/virtualenv/bin/python /var/webapps/engus/code/manage.py runserver 0.0.0.0:8001`
 7. localhost:8002
 
-vagrant ssh
-sudo su -l engus
-/var/webapps/engus/virtualenv/bin/python /var/webapps/engus/code/manage.py createsuperuser
-/var/webapps/engus/virtualenv/bin/python /var/webapps/engus/code/manage.py shell
-/var/webapps/engus/virtualenv/bin/python /var/webapps/engus/code/manage.py runserver 0.0.0.0:8001
+`vagrant ssh`  
+`sudo su -l engus`  
+`/var/webapps/engus/virtualenv/bin/python /var/webapps/engus/code/manage.py createsuperuser`  
+`/var/webapps/engus/virtualenv/bin/python /var/webapps/engus/code/manage.py shell`  
+`/var/webapps/engus/virtualenv/bin/python /var/webapps/engus/code/manage.py runserver 0.0.0.0:8001`  
 
-/var/webapps/engus/virtualenv/bin/pip install <package>
-/var/webapps/engus/virtualenv/bin/pip freeze > /var/webapps/engus/code/requirements.txt
+`/var/webapps/engus/virtualenv/bin/pip install <package>`  
+`/var/webapps/engus/virtualenv/bin/pip freeze > /var/webapps/engus/code/requirements.txt`
