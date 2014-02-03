@@ -1,0 +1,10 @@
+[program:{{ project_name }}]
+directory = {{ project_root }}/code
+command = {{ project_root }}/virtualenv/bin/gunicorn {{ project_name }}.wsgi:application -c {{ project_root }}/conf/gunicorn.conf.py
+user = {{ project_name }}
+loglevel = debug
+stdout_logfile = {{ project_root }}/logs/supervisor.log
+stderr_logfile = {{ project_root }}/logs/supervisor.error.log
+autostart = true
+autorestart = true
+redirect_stderr = true

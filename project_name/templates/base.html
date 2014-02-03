@@ -5,11 +5,11 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">      
     <title>{% block pagetitle %}{% if page_title %}{{ page_title }}. {% endif %}{% endblock %}Название сайта</title>
     {% load staticfiles %}
-    <link rel="shortcut icon" href="{% static "dist/img/favicon.ico" %}" type="image/x-icon">
+    <link rel="shortcut icon" href="{% static "img/favicon.ico" %}" type="image/x-icon">
     <meta name="description" content="" />
     <meta name="keywords" content="" />
 
-    <link rel="stylesheet" href="{% static "dist/css/global.css" %}"/>
+    <link rel="stylesheet" href="{% static "css/global.css" %}"/>
     {% block extrastyles %}{% endblock %}
 
     <script type="text/javascript" src="{% static "dist/js/global.min.js" %}"></script>
@@ -18,7 +18,7 @@
     {% block extrahead %}{% endblock %}
 </head>
 <body class="page">
-    {% block body %}
+    {% block content %}
     {% endblock %}
 
     {% if not debug %}

@@ -1,0 +1,39 @@
+@import 'nib';
+
+global-reset()
+
+@import 'hacks.styl';
+
+.html {
+    font-size: 20px;
+    font-family: "PT Sans", "Helvetica Neue",Helvetica,Arial,sans-serif
+
+    @media (max-width: 1200px) {
+        font-size: 19px;
+    }
+
+    @media (max-width: 1024px) {
+        font-size: 18px;
+    }
+
+    @media (max-width: 600px) {
+        font-size: 17px;
+    }
+}
+
+* {
+    -webkit-tap-highlight-color: transparent;
+}
+
+// blocks:
+@import 'link.styl';
+@import 'page.styl';
+@import 'homepage.styl';
+@import 'content.styl';
+@import 'app.styl';
+@import 'dictionary.styl';
+@import 'definition.styl';
+@import 'cards.styl';
+@import 'topmenu.styl';
+@import 'learning.styl';
+@import 'settings.styl';

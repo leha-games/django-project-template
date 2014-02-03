@@ -14,17 +14,19 @@
 
 # Directories #
 ###############
+deployment/credentials
+deployment/hosts
+deployment/files/ssh
 logs/
-project-docs/
+data/
 .idea/
-db/
-media/*
-static/*
+.vagrant/
 
 # Specific files #
 ##################
-*/settings/local.py
-secret_key.py
+local_settings.py
+vagrant_ansible_inventory_default
+
 
 # OS generated files #
 ######################

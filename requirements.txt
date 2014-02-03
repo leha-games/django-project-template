@@ -3,3 +3,8 @@ South
 easy-thumbnails
 pytils
 Fabric
+django-filter
+djangorestframework
+gunicorn
+setproctitle
+psycopg2

@@ -1,0 +1,27 @@
+DEBUG = True
+
+TEMPLATE_DEBUG = DEBUG
+
+# easy-thumbnails
+THUMBNAIL_DEBUG = DEBUG
+
+INTERNAL_IPS = ('127.0.0.1', '10.0.2.2', )
+
+SECRET_KEY = "{{ lookup('password', 'credentials/' + nickname + '/secret_key length=100') }}"
+
+DATABASES = {
+    'default': {
+        'ENGINE': 'django.db.backends.postgresql_psycopg2',
+        'NAME': '{{ project_name }}',
+        'USER': '{{ project_name }}',
+        'PASSWORD': "{{ lookup('file', 'credentials/' + nickname + '/postgres_password') }}",
+        'HOST': 'localhost',
+        'PORT': '',
+    }
+}
+
+EMAIL_HOST = 'localhost'
+EMAIL_PORT = 1025
+EMAIL_HOST_USER = ''
+EMAIL_HOST_PASSWORD = ''
+EMAIL_USE_TLS = False

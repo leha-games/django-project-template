@@ -2,22 +2,14 @@ module.exports = function(grunt) {
 
     grunt.initConfig({
         pkg: grunt.file.readJSON('package.json'),
-        concat: {
-            options: {
-                separator: ';'
-            },
-            dist: {
-                src: ['js/jquery-2.0.3.min.js', 'js/script.js'],
-                dest: 'dist/js/global.js'
-            }
-        },
         uglify: {
             options: {
-                banner: '/*! <%= grunt.template.today("dd-mm-yyyy") %> */\n'
+                banner: '/*! <%= pkg.name %> - v<%= pkg.version %> - <%= grunt.template.today("dd-mm-yyyy") %> */\n'
             },
             dist: {
                 files: {
-                    'dist/js/global.min.js': ['<%= concat.dist.dest %>']
+                    '../js/global.min.js': [
+                    ]
                 }
             }
         },
@@ -27,13 +19,22 @@ module.exports = function(grunt) {
                     compress: false
                 },
                 files: {
-                    'dist/css/global.css': 'styl/global.styl'
+                    'tmp/global.stylus.css': 'stylus/global.styl'
+                }
+            }
+        },
+        csso: {
+            dist: {
+                files: {
+                    '../css/global.min.css': [
+                        'tmp/global.stylus.css'
+                    ]
                 }
             }
         },
         watch: {
-            files: ['styl/*'],
-            tasks: ['stylus']
+            files: ['stylus/*'],
+            tasks: ['stylus', 'csso']
         }
     });
 
@@ -41,7 +42,8 @@ module.exports = function(grunt) {
     grunt.loadNpmTasks('grunt-contrib-watch');
     grunt.loadNpmTasks('grunt-contrib-concat');
     grunt.loadNpmTasks('grunt-contrib-uglify');
+    grunt.loadNpmTasks('grunt-csso');
 
-    grunt.registerTask('default', ['concat', 'uglify', 'stylus']);
+    grunt.registerTask('default', ['uglify', 'stylus', 'csso']);
 
 };

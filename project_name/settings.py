@@ -1,25 +1,11 @@
-"""
-Django main settings for django_test project.
-
-If you need to override a setting locally, use local.py
-"""
 
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 import os
-BASE_DIR = os.path.dirname(os.path.dirname(__file__))
-
-
-DEBUG = bool(os.environ.get('DJANGO_DEBUG', ''))
-
-TEMPLATE_DEBUG = DEBUG
-
-
-SECRET_KEY = os.environ['SECRET_KEY']
+BASE_DIR = os.path.dirname(__file__)
 
 
 INSTALLED_APPS = (
     # Django contrib apps
-    'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
     'django.contrib.sessions',
@@ -27,17 +13,22 @@ INSTALLED_APPS = (
     'django.contrib.staticfiles',
 
     # Third-party apps, patches, fixes
-    'pytils',
     'easy_thumbnails',
+    'rest_framework',
+    'registration',
 
     # Database migrations
     'south',
 
     # Application base, containing global templates.
-    '{{ project_name }}.apps.base',
+    '{{ project_name }}.apps.dictionary',
+    '{{ project_name }}.apps.cards',
+    '{{ project_name }}.apps.accounts',
 
     # Local apps, referenced via {{ project_name }}.appname
 
+
+    'django.contrib.admin',
 )
 
 MIDDLEWARE_CLASSES = (
@@ -59,7 +50,6 @@ WSGI_APPLICATION = '{{ project_name }}.wsgi.application'
 
 
 # Internationalization
-# https://docs.djangoproject.com/en/1.6/topics/i18n/
 
 LANGUAGE_CODE = 'ru-RU'
 
@@ -72,12 +62,18 @@ USE_L10N = True
 USE_TZ = True
 
 
+# Media and Static Files
 
-# Static files (CSS, JavaScript, Images)
-# https://docs.djangoproject.com/en/1.6/howto/static-files/
+MEDIA_ROOT = '/var/webapps/{{ project_name }}/www/media/'
+
+MEDIA_URL = '/media/'
+
+STATIC_ROOT = '/var/webapps/{{ project_name }}/www/static/'
 
 STATIC_URL = '/static/'
 
+
+APPEND_SLASH = False
 
 
 
@@ -85,3 +81,11 @@ STATIC_URL = '/static/'
 
 # easy-thumbnails
 THUMBNAIL_SUBDIR = 'thumbs'
+
+# rest framework
+REST_FRAMEWORK = {
+    'DEFAULT_FILTER_BACKENDS': ('rest_framework.filters.DjangoFilterBackend',)
+}
+
+
+from .local_settings import *

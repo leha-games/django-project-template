@@ -1,0 +1,15 @@
+---
+- name: restart nginx
+  sudo: yes
+  service: name=nginx state=restarted enabled=yes
+
+- name: reload nginx
+  sudo: yes
+  service: name=nginx state=reloaded
+
+- name: supervisorctrl restart program
+  supervisorctl: name={{ project_name }} state=restarted 
+
+- name: restart ssh
+  sudo: yes
+  action: service name=ssh state=restarted enabled=yes

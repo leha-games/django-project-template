@@ -1,0 +1,62 @@
+DEBUG = False
+
+TEMPLATE_DEBUG = DEBUG
+
+# easy-thumbnails
+THUMBNAIL_DEBUG = DEBUG
+
+SECRET_KEY = "{{ lookup('password', 'credentials/' + nickname + '/secret_key length=100') }}"
+
+DATABASES = {
+    'default': {
+        'ENGINE': 'django.db.backends.postgresql_psycopg2',
+        'NAME': '{{ project_name }}',
+        'USER': '{{ project_name }}',
+        'PASSWORD': "{{ lookup('file', 'credentials/' + nickname + '/postgres_password') }}",
+        'HOST': 'localhost',
+        'PORT': '',
+    }
+}
+
+ALLOWED_HOSTS = ['127.0.0.1', ]
+
+ADMINS = (
+    ('Alexey Grigoriev', 'grialexey@gmail.com'),
+)
+
+MANAGERS = ADMINS
+
+
+EMAIL_HOST_USER = '{{ project_name }}'
+DEFAULT_FROM_EMAIL = "{{ project_name }}@{{ server_hostname }}"
+SERVER_EMAIL = "{{ project_name }}@{{ server_hostname }}"
+
+
+LOGGING = {
+    'version': 1,
+    'disable_existing_loggers': False,
+    'formatters': {
+        'verbose': {
+            'format': '%(levelname)s %(asctime)s %(module)s %(process)d %(thread)d %(message)s'
+        },
+    },
+    'handlers': {
+        'file': {
+            'level': 'ERROR',
+            'class': 'logging.FileHandler',
+            'filename': '{{ project_root }}/logs/django.error.log',
+            'formatter': 'verbose',
+        },
+        'mail_admins': {
+            'level': 'ERROR',
+            'class': 'django.utils.log.AdminEmailHandler'
+        },
+    },
+    'loggers': {
+        'django.request': {
+            'handlers': ['file', 'mail_admins'],
+            'level': 'ERROR',
+            'propagate': True,
+        },
+    },
+}
