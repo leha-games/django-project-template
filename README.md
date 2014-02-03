@@ -33,16 +33,16 @@ Useful commands
 
 Passwords crypt
 ---------------
->>> openssl passwd -salt salty -1 mypass
+`>>> openssl passwd -salt salty -1 mypass`
 
 
 Initial remote server setup
 ---------------------------
-ansible-playbook deployment/initial.yml -i deployment/hosts/production --ask-pass -c paramiko
-ansible-playbook deployment/provision.yml -i deployment/hosts/production -K
-ansible-playbook deployment/deploy.yml -i deployment/hosts/production -K
+`ansible-playbook deployment/initial.yml -i deployment/hosts/production --ask-pass -c paramiko`  
+`ansible-playbook deployment/provision.yml -i deployment/hosts/production -K`  
+`ansible-playbook deployment/deploy.yml -i deployment/hosts/production -K`
 
 
 Production deploy
 -----------------
-ansible-playbook deployment/deploy.yml -i deployment/hosts/production -K
+`ansible-playbook deployment/deploy.yml -i deployment/hosts/production -K`
