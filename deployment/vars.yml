@@ -1,7 +1,7 @@
-project_name: engus
-project_root: /var/webapps/engus
-project_repo: git@bitbucket.org:grialexey/engus.git
-server_hostname: engus.ru
+project_name: {{ project_name }}
+project_root: /var/webapps/{{ project_name }}
+project_repo: git@bitbucket.org:grialexey/{{ project_name }}.git
+server_hostname: {{ project_name }}.ru
 remote_host: bitbucket.org
 timezone: Europe/Moscow
 system_packages:

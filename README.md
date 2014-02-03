@@ -2,7 +2,7 @@ Django project template with Vagrant and Ansible
 ================================================
 
 To start new project enter:  
-`django-admin.py startproject --template=https://bitbucket.org/grialexey/django-project-template/get/master.zip --name=Vagrantfile,README.md project_name`
+`django-admin.py startproject --template=https://bitbucket.org/grialexey/django-project-template/get/master.zip --name=Vagrantfile,README.md,deployment/vars.yml project_name`
 
 
 Starting development
