@@ -15,15 +15,12 @@ INSTALLED_APPS = (
     # Third-party apps, patches, fixes
     'easy_thumbnails',
     'rest_framework',
-    'registration',
 
     # Database migrations
     'south',
 
     # Application base, containing global templates.
-    '{{ project_name }}.apps.dictionary',
-    '{{ project_name }}.apps.cards',
-    '{{ project_name }}.apps.accounts',
+    '{{ project_name }}.apps.base',
 
     # Local apps, referenced via {{ project_name }}.appname
 
