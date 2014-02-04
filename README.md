@@ -51,7 +51,11 @@ Passwords crypt
 
 Initial remote server setup
 ---------------------------
-`ansible-playbook deployment/initial.yml -i deployment/hosts/production --ask-pass -c paramiko`  
+create deployment/initial.yml  
+create deployment/provision.yml  
+generate ssh key in deployment/files/ssh/ dir:  
+`ssh-keygen -t rsa -C "grialexey@gmail.com"`  
+`ansible-playbook deployment/initial.yml -i deployment/hosts/initial --ask-pass -c paramiko`  
 `ansible-playbook deployment/provision.yml -i deployment/hosts/production -K`  
 `ansible-playbook deployment/deploy.yml -i deployment/hosts/production -K`
 
