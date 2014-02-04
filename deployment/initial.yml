@@ -29,7 +29,7 @@
     notify: update tzdata
 
   handlers:
-    - name: Update tzdata
+    - name: update tzdata
       shell: /usr/sbin/dpkg-reconfigure --frontend noninteractive tzdata
 
     - include: handlers.yml
