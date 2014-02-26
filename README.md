@@ -51,12 +51,17 @@ Passwords crypt
 
 Initial remote server setup
 ---------------------------
-create deployment/initial.yml  
-create deployment/provision.yml  
+create deployment/hosts/initial  
+create deployment/hosts/production  
 generate ssh key in deployment/files/ssh/ dir:  
 `ssh-keygen -t rsa -C "grialexey@gmail.com"`  
+add public key in BitBucket repository  
 `ansible-playbook deployment/initial.yml -i deployment/hosts/initial --ask-pass -c paramiko`  
 `ansible-playbook deployment/provision.yml -i deployment/hosts/production -K`  
+bug with postgres  
+solve by login by ssh and reinstall postgres:  
+`sudo apt-get remove --purge postgresql-9.1`  
+`sudo apt-get install postgresql-9.1`  
 `ansible-playbook deployment/deploy.yml -i deployment/hosts/production -K`
 
 
