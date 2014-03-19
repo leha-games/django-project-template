@@ -33,7 +33,7 @@ module.exports = function(grunt) {
             }
         },
         watch: {
-            files: ['stylus/*'],
+            files: ['stylus/**'],
             tasks: ['stylus', 'csso']
         }
     });
