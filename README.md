@@ -26,13 +26,7 @@ Starting development
 9. `/var/webapps/{{ project_name }}/virtualenv/bin/pip freeze > /var/webapps/{{ project_name }}/code/requirements.txt`
 10. `/var/webapps/{{ project_name }}/virtualenv/bin/python /var/webapps/{{ project_name }}/code/manage.py runserver 0.0.0.0:8001`
 11. localhost:8002
-12. Install static files libs:
-    `sudo apt-get update`  
-    `sudo apt-get install -y python-software-properties python g++ make`  
-    `sudo add-apt-repository ppa:chris-lea/node.js`  
-    `sudo apt-get update`  
-    `sudo apt-get install nodejs`  
-    `sudo npm install -g bower`  
+12. Install static files libs (from local, not from server):
     `cd /var/webapps/{{ project_name }}/code/{{ project_name }}/static/frontend`  
     `npm install`  
     `bower install`
