@@ -27,8 +27,14 @@ Starting development
 10. `/var/webapps/{{ project_name }}/virtualenv/bin/python /var/webapps/{{ project_name }}/code/manage.py runserver 0.0.0.0:8001`
 11. localhost:8002
 12. Install static files libs:
-    `cd /var/webapps/{{ project_name }}/code/{{ project_name }}/static/frontend`
-    `npm install`
+    `sudo apt-get update`  
+    `sudo apt-get install -y python-software-properties python g++ make`  
+    `sudo add-apt-repository ppa:chris-lea/node.js`  
+    `sudo apt-get update`  
+    `sudo apt-get install nodejs`  
+    `sudo npm install -g bower`  
+    `cd /var/webapps/{{ project_name }}/code/{{ project_name }}/static/frontend`  
+    `npm install`  
     `bower install`
 
 Useful commands
@@ -65,11 +71,12 @@ Initial remote server setup
 7. add public key in BitBucket repository  
 8. `ansible-playbook deployment/initial.yml -i deployment/hosts/initial --ask-pass -c paramiko`  
 9. `ansible-playbook deployment/provision.yml -i deployment/hosts/production -K`  
-10. bug with postgres  
+10. `ansible-playbook deployment/upgrade.yml -i deployment/hosts/production -K`  
+11. bug with postgres  
     solve by login by ssh and reinstall postgres:  
-11. `sudo apt-get remove --purge postgresql-9.1`  
-12. `sudo apt-get install postgresql-9.1`  
-13. `ansible-playbook deployment/deploy.yml -i deployment/hosts/production -K`
+12. `sudo apt-get remove --purge postgresql-9.1`  
+13. `sudo apt-get install postgresql-9.1`  
+14. `ansible-playbook deployment/deploy.yml -i deployment/hosts/production -K`
 
 
 Production deploy
