@@ -16,3 +16,6 @@ system_packages:
   - postgresql-contrib
   - python-psycopg2
   - postfix
+  - memcached
+  - libmemcached-dev
+  - libmemcached-tools
