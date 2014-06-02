@@ -15,6 +15,7 @@ INSTALLED_APPS = (
     # Third-party apps, patches, fixes
     'easy_thumbnails',
     'rest_framework',
+    'debug_toolbar',
 
     # Database migrations
     'south',
@@ -80,6 +81,7 @@ CACHES = {
     }
 }
 
+SESSION_ENGINE = "django.contrib.sessions.backends.cached_db"
 
 
 # Third-party apps settings

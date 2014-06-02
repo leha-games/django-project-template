@@ -3,8 +3,12 @@ South
 easy-thumbnails
 pytils
 Fabric
+django-braces
 django-filter
+django-debug-toolbar
 djangorestframework
 gunicorn
 setproctitle
 psycopg2
+Pillow
+pylibmc
