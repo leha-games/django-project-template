@@ -36,7 +36,7 @@
     notify: supervisorctrl restart program
 
   - name: Sync Django database.
-    shell: "{{ project_root }}/virtualenv/bin/python {{ project_root }}/code/manage.py syncdb --migrate --noinput"
+    shell: "{{ project_root }}/virtualenv/bin/python {{ project_root }}/code/manage.py migrate"
     sudo_user: "{{ project_name }}"
 
   - name: Collect static files.

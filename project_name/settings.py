@@ -17,9 +17,6 @@ INSTALLED_APPS = (
     'rest_framework',
     'debug_toolbar',
 
-    # Database migrations
-    'south',
-
     # Application base, containing global templates.
     '{{ project_name }}.apps.base',
 
@@ -71,7 +68,7 @@ STATIC_ROOT = '/var/webapps/{{ project_name }}/www/static/'
 STATIC_URL = '/static/'
 
 
-APPEND_SLASH = False
+#APPEND_SLASH = False
 
 SESSION_ENGINE = "django.contrib.sessions.backends.cached_db"
 

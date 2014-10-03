@@ -1,8 +1,6 @@
 Django
-South
 easy-thumbnails
 pytils
-Fabric
 django-braces
 django-filter
 django-debug-toolbar
