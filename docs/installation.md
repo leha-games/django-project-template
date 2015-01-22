@@ -11,25 +11,27 @@ Starting development
 2. Switch to project's directory
 3. Start vagrant and make provision:  
    `vagrant up`
-4. Uncomment line in Vagrantfile: 
+4. Make a provision of project:  
+   `ansible-playbook deployment/provision.yml -i deployment/hosts/development`
+5. Uncomment line in Vagrantfile: 
    `config.vm.synced_folder ".", "/var/webapps/{{ project_name }}/code", owner: "{{ project_name }}", group: "{{ project_name }}"`
-5. Now you have to reload vagrant, to sync your project directory with virtual server:  
+6. Now you have to reload vagrant, to sync your project directory with virtual server:  
    `vagrant reload`
-6. Make a deploy of project:  
+7. Make a deploy of project:  
    `ansible-playbook deployment/deploy.yml -i deployment/hosts/development`
-7. SSH to virtual server:  
+8. SSH to virtual server:  
    `vagrant ssh`
-8. Switch to project user:  
+9. Switch to project user:  
    `sudo su -l {{ project_name }}`
-9. Create supersuser with username `admin` and password `admin` for convention:  
+10. Create supersuser with username `admin` and password `admin` for convention:  
    `/var/webapps/{{ project_name }}/virtualenv/bin/python /var/webapps/{{ project_name }}/code/manage.py createsuperuser`
-10. Freeze installed python packages in requirements.txt file:  
+11. Freeze installed python packages in requirements.txt file:  
     `/var/webapps/{{ project_name }}/virtualenv/bin/pip freeze > /var/webapps/{{ project_name }}/code/requirements.txt`
-11. Start django development server:  
+12. Start django development server:  
     `/var/webapps/{{ project_name }}/virtualenv/bin/python /var/webapps/{{ project_name }}/code/manage.py runserver 0.0.0.0:8001`
-12. Now you can see your app running in browser:  
+13. Now you can see your app running in browser:  
     `http://127.0.0.1:8002/`
-13. Install static files libs (typically I do this from local machine, not from virtual server):
+14. Install static files libs (typically I do this from local machine, not from virtual server):
     `cd /var/webapps/{{ project_name }}/code/{{ project_name }}/static/frontend`  
     `npm install`  
     `bower install`
