@@ -17,8 +17,4 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
 
   config.vbguest.iso_path = "#{ENV['HOME']}/Downloads/VBoxGuestAdditions.iso"
 
-  config.vm.provision "ansible" do |ansible|
-    ansible.playbook = "deployment/provision.yml"
-    ansible.extra_vars = { nickname: "development", vm: 1 }
-  end
 end
