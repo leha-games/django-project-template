@@ -9,7 +9,7 @@ Starting development
    And download VBoxGuestAdditions.iso for your version of VirtualBox
 1. Remove `192.168.33.10` from the `~/.ssh/known_hosts` (otherwise can error occur during provision)
 2. Switch to project's directory
-3. Start vagrant and make provision:  
+3. Start vagrant:  
    `vagrant up`
 4. Make a provision of project:  
    `ansible-playbook deployment/provision.yml -i deployment/hosts/development`
