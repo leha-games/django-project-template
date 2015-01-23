@@ -7,8 +7,8 @@ Starting development
    `vagrant plugin install vagrant-cachier`  
    `vagrant plugin install vagrant-vbguest`  
    And download VBoxGuestAdditions.iso for your version of VirtualBox
-1. Remove `192.168.33.10` from the `~/.ssh/known_hosts` (otherwise can error occur during provision)
-2. Switch to project's directory
+1. Remove `192.168.33.10` from the `~/.ssh/known_hosts` (otherwise error can occur during provision);
+2. Switch to project's directory;
 3. Start vagrant:  
    `vagrant up`
 4. Make a provision of project:  
@@ -31,8 +31,8 @@ Starting development
     `/var/webapps/{{ project_name }}/virtualenv/bin/python /var/webapps/{{ project_name }}/code/manage.py runserver 0.0.0.0:8001`
 13. Now you can see your app running in browser:  
     `http://127.0.0.1:8002/`
-14. Install static files libs (typically I do this from local machine, not from virtual server):
-    `cd /var/webapps/{{ project_name }}/code/{{ project_name }}/static/frontend`  
+14. Install static files libs (preferably I do this from local machine, not from virtual server):
+    `cd {{ project_name }}/static/frontend`  
     `npm install`  
     `bower install`
 
