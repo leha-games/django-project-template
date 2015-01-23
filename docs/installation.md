@@ -39,28 +39,30 @@ Starting development
 
 Initial remote server setup
 ---------------------------
-1. Edit deployment/vars.yml file
-2. Add files:
+1. Add files:  
    `credentials/production/super_user_name`  
    `credentials/production/super_user_password`  
    `credentials/production/super_user_password_crypted`  
    `credentials/production/project_user_password`  
    `credentials/production/project_user_password_crypted`  
    `credentials/production/ssh_port`  
-   `hosts/production`
-3. create deployment/hosts/initial  
-4. create deployment/hosts/production  
-5. generate ssh key in deployment/files/ssh/ dir:  
-6. `ssh-keygen -t rsa -C "grialexey@gmail.com"`  
-7. add public key in BitBucket repository  
-8. `ansible-playbook deployment/initial.yml -i deployment/hosts/initial --ask-pass -c paramiko`  
-9. `ansible-playbook deployment/provision.yml -i deployment/hosts/production -K`  
-10. `ansible-playbook deployment/upgrade.yml -i deployment/hosts/production -K`  
-11. bug with postgres  
-    solve by login by ssh and reinstall postgres:  
-12. `sudo apt-get remove --purge postgresql-9.1`  
-13. `sudo apt-get install postgresql-9.1`  
-14. `ansible-playbook deployment/deploy.yml -i deployment/hosts/production -K`
+   `deployment/hosts/initial`  
+   `deployment/hosts/production`  
+2. Edit `deployment/vars.yml` file. Pay attention to `server_hostname`, `project_repo` and `remote_host` variables
+3. Generate `id_rsa` ssh key in `deployment/files/ssh/` directory by command (it asks you where to generate key):  
+   `ssh-keygen -t rsa -C "grialexey@gmail.com"`  
+4. Add public key `id_rsa.pub` in your repository, to allow server pull this repository.  
+   This command can help:  
+   `cat deployment/files/ssh/id_rsa.pub | pbcopy`
+5. Do initial provision of server:  
+   `ansible-playbook deployment/initial.yml -i deployment/hosts/initial --ask-pass -c paramiko`  
+6. Do provision of server:  
+   `ansible-playbook deployment/provision.yml -i deployment/hosts/production -K`  
+7. Update system packages and upgrade them if needed:  
+   `ansible-playbook deployment/upgrade.yml -i deployment/hosts/production -K`  
+8. Make first deploy of your project:  
+   `ansible-playbook deployment/deploy.yml -i deployment/hosts/production -K`
+9. Enjoy it
 
 
 Useful commands
