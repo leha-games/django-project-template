@@ -60,9 +60,10 @@ Initial remote server setup
    `ansible-playbook deployment/provision.yml -i deployment/hosts/production -K`  
 7. Update system packages and upgrade them if needed:  
    `ansible-playbook deployment/upgrade.yml -i deployment/hosts/production -K`  
-8. Make first deploy of your project:  
+8. Make first deploy of project:  
    `ansible-playbook deployment/deploy.yml -i deployment/hosts/production -K`
-9. Enjoy it
+9. Login on remote server and create superuser;
+10. Enjoy your project!
 
 
 Useful commands
