@@ -9,6 +9,7 @@ system_packages:
   - nginx
   - supervisor
   - git-core
+  - libjpeg-dev
   - python-virtualenv
   - libpq-dev
   - python-dev
