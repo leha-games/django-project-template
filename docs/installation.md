@@ -13,7 +13,7 @@ Starting development
    `vagrant up`
 4. Make a provision of project:  
    `ansible-playbook deployment/provision.yml -i deployment/hosts/development`
-5. Uncomment line in Vagrantfile: 
+5. Uncomment this line in Vagrantfile to allow syncing a project directory:  
    `config.vm.synced_folder ".", "/var/webapps/{{ project_name }}/code", owner: "{{ project_name }}", group: "{{ project_name }}"`
 6. Now you have to reload vagrant, to sync your project directory with virtual server:  
    `vagrant reload`
