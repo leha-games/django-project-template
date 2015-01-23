@@ -8,7 +8,7 @@ How to start a new project
 1. Django must be installed on your computer;
 2. Switch to directory where you want to locate your new project;
 3. Run this command (replace project_name with you know):  
-   `django-admin.py startproject --template=https://bitbucket.org/grialexey/django-project-template/get/master.zip --name=Vagrantfile,installation.md,deployment.md,vars.yml project_name`  
+   `django-admin.py startproject --template=https://github.com/grialexey/django-project-template/archive/master.zip --name=Vagrantfile,installation.md,deployment.md,vars.yml project_name`  
 4. Switch to project directory;
 5. Edit `README.md` file. Add your project description in it;
 6. Create repository:  
