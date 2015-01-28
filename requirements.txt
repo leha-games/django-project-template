@@ -4,6 +4,7 @@ pytils
 django-braces
 django-filter
 django-debug-toolbar
+django-htmlmin
 djangorestframework
 gunicorn
 setproctitle
