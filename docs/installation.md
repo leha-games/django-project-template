@@ -3,10 +3,10 @@ Installation
 
 Starting development
 --------------------
-0. Don't forget to install vagrant plugins:  
+0. Before anything else install Ansible, Vagrant, and two vagrant plugins:  
    `vagrant plugin install vagrant-cachier`  
    `vagrant plugin install vagrant-vbguest`  
-   And download VBoxGuestAdditions.iso for your version of VirtualBox
+   Download VBoxGuestAdditions.iso for your version of VirtualBox
 1. Remove `192.168.33.10` from the `~/.ssh/known_hosts` (otherwise error can occur during provision);
 2. Switch to project's directory;
 3. Start vagrant:  
@@ -23,7 +23,7 @@ Starting development
    `vagrant ssh`
 9. Switch to project user:  
    `sudo su -l {{ project_name }}`
-10. Create supersuser with username `admin` and password `admin` for convention:  
+10. Create website superuser with username `admin` and password `admin` for convention:  
    `/var/webapps/{{ project_name }}/virtualenv/bin/python /var/webapps/{{ project_name }}/code/manage.py createsuperuser`
 11. Freeze installed python packages in requirements.txt file:  
     `/var/webapps/{{ project_name }}/virtualenv/bin/pip freeze > /var/webapps/{{ project_name }}/code/requirements.txt`
@@ -56,7 +56,7 @@ Initial remote server setup
    `cat deployment/files/ssh/id_rsa.pub | pbcopy`
 5. Do initial provision of server:  
    `ansible-playbook deployment/initial.yml -i deployment/hosts/initial --ask-pass -c paramiko`  
-6. Do provision of server:  
+6. Do project provision of server:  
    `ansible-playbook deployment/provision.yml -i deployment/hosts/production -K`  
 7. Update system packages and upgrade them if needed:  
    `ansible-playbook deployment/upgrade.yml -i deployment/hosts/production -K`  
