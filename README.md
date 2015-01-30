@@ -15,5 +15,6 @@ How to start a new project
    `git init`  
    `git add .`  
    `git commit -m 'Initial commit'`
+7. Force add `deployment/credentials/development/` and `deployment/hosts/development` in your repository;
 7. Push project in remote repository (github, bitbucket or another);
 8. Follow instructions in `docs/installation.md` file to start development;
