@@ -14,8 +14,8 @@ INSTALLED_APPS = (
 
     # Third-party apps, patches, fixes
     'easy_thumbnails',
-    'rest_framework',
-    'debug_toolbar',
+    #'rest_framework',
+    #'debug_toolbar',
 
     # Application base, containing global templates.
     '{{ project_name }}.apps.base',
@@ -81,9 +81,9 @@ SESSION_ENGINE = "django.contrib.sessions.backends.cached_db"
 THUMBNAIL_SUBDIR = 'thumbs'
 
 # rest framework
-REST_FRAMEWORK = {
-    'DEFAULT_FILTER_BACKENDS': ('rest_framework.filters.DjangoFilterBackend',)
-}
+#REST_FRAMEWORK = {
+#    'DEFAULT_FILTER_BACKENDS': ('rest_framework.filters.DjangoFilterBackend',)
+#}
 
 
 from .local_settings import *
