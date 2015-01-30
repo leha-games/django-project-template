@@ -11,12 +11,8 @@
     "tests"
   ],
   "dependencies": {
-    "angular-animate": "*",
-    "angular-resource": "*",
-    "angular-touch": "*",
-    "angular-ui-router": "*",
-    "angular": "*",
     "font-awesome": "*",
-    "lodash": "*"
+    "lodash": "*",
+    "jquery": "*"
   }
 }
