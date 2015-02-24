@@ -1,13 +1,14 @@
 from django.conf import settings
 from django.conf.urls import patterns, include, url
+from django.views.generic.base import TemplateView
 
 from django.contrib import admin
 admin.autodiscover()
 
 
 urlpatterns = patterns('',
-    (r'', include('{{ project_name }}.apps.base.urls')),
-    (r'^{{ project_name }}admin/', include(admin.site.urls)),
+    url(r'^$', TemplateView.as_view(template_name="home.html")),
+    url(r'^{{ project_name }}admin/', include(admin.site.urls)),
 )
 
 

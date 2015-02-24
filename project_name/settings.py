@@ -17,11 +17,7 @@ INSTALLED_APPS = (
     #'rest_framework',
     #'debug_toolbar',
 
-    # Application base, containing global templates.
-    '{{ project_name }}.apps.base',
-
     # Local apps, referenced via {{ project_name }}.appname
-
 
     'django.contrib.admin',
 )
