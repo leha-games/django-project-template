@@ -33,7 +33,7 @@ Starting development
     `http://127.0.0.1:8002/`
 14. Install static files libs (preferably I do this from local machine, not from virtual server):
     `cd {{ project_name }}/static/frontend`  
-    `npm install`  
+    `sudo npm install --save-dev`  
     `bower install`
 
 

@@ -1,30 +1,33 @@
 html {
 	overflow-y: scroll;	/* fixing "jump horizontally" effect */
 }
-.hide {
-	display: none;
+.m-hide {
+    display: none !important;
 }
-.clear {
-	clear: both;
+.m-clear {
+    clear: both;
 }
-input, select, button{
+.m-bold {
+    font-weight: bold;
+}
+input, select, button, textarea {
     font-family: inherit;
     font-size: inherit;
     color: inherit;
 }
 
 /* Clearfix. For modern browsers */
-.clearfix:before,
-.clearfix:after {
+.m-clearfix:before,
+.m-clearfix:after {
     content:"";
     display:table;
 }
 
-.clearfix:after {
+.m-clearfix:after {
     clear:both;
 }
 
 /* Clearfix. For IE 6/7 (trigger hasLayout) */
-.clearfix {
+.m-clearfix {
     *zoom:1;
 }

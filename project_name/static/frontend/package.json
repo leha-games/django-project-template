@@ -4,14 +4,11 @@
   "private": true,
   "dependencies": {},
   "devDependencies": {
-    "grunt-contrib-stylus": "*",
-    "grunt": "*",
-    "nib": "*",
-    "grunt-contrib-watch": "*",
-    "grunt-reload": "*",
-    "grunt-contrib-concat": "*",
-    "grunt-contrib-uglify": "*",
-    "grunt-csso": "*"
+    "gulp": "*",
+    "gulp-concat": "*",
+    "gulp-stylus": "*",
+    "gulp-uglify": "*",
+    "nib": "*"
   },
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
