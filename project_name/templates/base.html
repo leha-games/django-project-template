@@ -4,14 +4,14 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">      
     <title>{% block pagetitle %}{% if page_title %}{{ page_title }}. {% endif %}{% endblock %}Site name</title>
-    <link rel="shortcut icon" href="{{ STATIC_URL }}img/favicon.ico" type="image/x-icon">
+    <link rel="shortcut icon" href="{{ STATIC_URL }}images-dist/favicon.ico" type="image/x-icon">
     <meta name="description" content="" />
     <meta name="keywords" content="" />
 
     <link rel="stylesheet" href="{{ STATIC_URL }}css/global.css"/>
     {% block extrastyles %}{% endblock %}
 
-    <script type="text/javascript" src="{{ STATIC_URL }}dist/js/global.min.js"></script>
+    <script async src="{{ STATIC_URL }}js/global.min.js"></script>
     {% block extrascripts %}{% endblock %}
 
     {% block extrahead %}{% endblock %}
