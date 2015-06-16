@@ -1,4 +1,5 @@
 [program:{{ project_name }}]
+environment=LANG="en_US.utf8", LC_ALL="en_US.UTF-8", LC_LANG="en_US.UTF-8"
 directory = {{ project_root }}/code
 command = {{ project_root }}/virtualenv/bin/gunicorn {{ project_name }}.wsgi:application -c {{ project_root }}/conf/gunicorn.conf.py
 user = {{ project_name }}
