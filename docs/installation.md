@@ -17,6 +17,7 @@ Starting development
    `config.vm.synced_folder ".", "/var/webapps/{{ project_name }}/code", owner: "{{ project_name }}", group: "{{ project_name }}"`
 6. Now you have to reload vagrant, to sync your project directory with virtual server:  
    `vagrant reload`
+7. Set absolute paths in `deployment/hosts/` files  
 7. Make a deploy of project:  
    `ansible-playbook deployment/deploy.yml -i deployment/hosts/development`
 8. SSH to virtual server:  
@@ -56,10 +57,10 @@ Initial remote server setup
    `cat deployment/files/ssh/id_rsa.pub | pbcopy`
 5. Do initial provision of server:  
    `ansible-playbook deployment/initial.yml -i deployment/hosts/initial --ask-pass -c paramiko`  
-6. Do project provision of server:  
-   `ansible-playbook deployment/provision.yml -i deployment/hosts/production -K`  
-7. Update system packages and upgrade them if needed:  
+6. Update system packages and upgrade them if needed:  
    `ansible-playbook deployment/upgrade.yml -i deployment/hosts/production -K`  
+7. Do project provision of server:  
+   `ansible-playbook deployment/provision.yml -i deployment/hosts/production -K`  
 8. Make first deploy of project:  
    `ansible-playbook deployment/deploy.yml -i deployment/hosts/production -K`
 9. Login on remote server and create superuser;
