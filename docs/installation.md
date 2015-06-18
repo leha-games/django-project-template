@@ -66,6 +66,10 @@ Initial remote server setup
 9. Login on remote server and create superuser;
 10. Enjoy your project!
 
+`sudo locale-gen ru_RU.UTF-8`
+`sudo locale-gen en_US.UTF-8`
+
+
 
 Useful commands
 ---------------
