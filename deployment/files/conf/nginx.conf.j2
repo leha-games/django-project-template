@@ -2,6 +2,8 @@ server {
 
     server_name {{ server_hostname }};  
 
+    client_max_body_size 15m;
+
     access_log {{ project_root }}/logs/nginx.access.log;
     error_log {{ project_root }}/logs/nginx.error.log; 
 
