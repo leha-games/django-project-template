@@ -1,24 +1,28 @@
 ---
 - hosts: all
   vars_files:
+    - system_requirements.yml
     - vars.yml
   gather_facts: false
-  sudo: True
+  become: True
 
   tasks:
 
   - name: Create the project directory.
-    file: state=directory path="{{ project_root }}"
+    file: state=directory path={{ project_root }}
 
   - name: Create project user.
     user: >
-      home="{{ project_root }}/home/" 
-      name="{{ project_name }}" 
-      password="{{ lookup('file', 'credentials/' + nickname + '/project_user_password_crypted') }}" state=present
-      shell="/bin/bash"
+      home={{ project_root }}/home/
+      name={{ project_name }}
+      password={{ lookup('file', 'credentials/' + nickname + '/project_user_password_crypted') }} state=present
+      shell=/bin/bash
+
+  - name: Chown for the project directory.
+    file: state=directory path={{ project_root }} owner={{ project_name }} group={{ project_name }}
 
   - name: Create the SSH directory.
-    file: state=directory path="{{ project_root }}/home/.ssh/"
+    file: state=directory path={{ project_root }}/home/.ssh/ owner={{ project_name }} group={{ project_name }}
     when: vm == 0
 
   - name: Add {{ remote_host }} fingerprint to the SSH known_hosts.
@@ -26,11 +30,11 @@
     when: vm == 0
 
   - name: Upload repository SSH key.
-    copy: src="files/ssh/id_rsa" dest="{{ project_root }}/home/.ssh/id_rsa" mode="0600"
+    copy: src=files/ssh/id_rsa dest={{ project_root }}/home/.ssh/id_rsa mode=0600 owner={{ project_name }} group={{ project_name }}
     when: vm == 0
 
   - name: Create project directories.
-    file: group="{{ project_name }}" owner="{{ project_name }}" mode=755 state=directory path="{{ project_root }}/{{ item }}"
+    file: group={{ project_name }} owner={{ project_name }} mode=755 state=directory path={{ project_root }}/{{ item }}
     with_items:
       - ""
       - "code"
@@ -42,14 +46,11 @@
   - name: Install required system packages.
     apt: pkg={{ item }} state=installed update-cache=yes
     with_items: system_packages
-
-  - name: Change permissions.
-    shell: "chown -R {{ project_name }}:{{ project_name }} {{ project_root }}"
     
   - name: Create database.
-    sudo_user: postgres
+    become_user: postgres
     postgresql_db: >
-      name="{{ project_name }}"
+      name={{ project_name }}
       encoding='UTF-8' 
       lc_collate='en_US.UTF-8' 
       lc_ctype='en_US.UTF-8' 
@@ -58,7 +59,7 @@
       - database
 
   - name: Create database user.
-    sudo_user: postgres
+    become_user: postgres
     postgresql_user: >
       db={{ project_name }} 
       name={{ project_name }} 

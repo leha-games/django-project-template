@@ -3,7 +3,7 @@
   vars_files:
     - vars.yml
   gather_facts: false
-  sudo: True
+  become: True
 
   tasks:
   - name: Update server packages.

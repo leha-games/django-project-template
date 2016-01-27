@@ -3,21 +3,21 @@
   vars_files:
     - vars.yml
   gather_facts: false
-  sudo: yes
+  become: yes
 
   tasks:
 
   - name: Create superuser.
     user: >
-      name="{{ lookup('file', 'credentials/' + nickname + '/super_user_name') }}" 
-      password="{{ lookup('file', 'credentials/' + nickname + '/super_user_password_crypted') }}" state=present
-      groups="sudo"
-      shell="/bin/bash"
+      name={{ lookup('file', 'credentials/' + nickname + '/super_user_name') }}
+      password={{ lookup('file', 'credentials/' + nickname + '/super_user_password_crypted') }} state=present
+      groups=sudo
+      shell=/bin/bash
 
   - name: Superuser bash_profile file update.
     template: >
-      src="files/conf/bash_profile.j2" 
-      dest="/home/{{ lookup('file', 'credentials/' + nickname + '/super_user_name') }}/.profile" 
+      src=files/conf/bash_profile.j2
+      dest=/home/{{ lookup('file', 'credentials/' + nickname + '/super_user_name') }}/.profile
       backup=yes 
       owner={{ lookup('file', 'credentials/' + nickname + '/super_user_name') }} 
       group={{ lookup('file', 'credentials/' + nickname + '/super_user_name') }} 
@@ -25,13 +25,13 @@
 
   - name: Add authorized key.
     authorized_key: >
-      user="{{ lookup('file', 'credentials/' + nickname + '/super_user_name') }}" 
-      key="{{ lookup('file', '~/.ssh/id_rsa.pub') }}"
+      user={{ lookup('file', 'credentials/' + nickname + '/super_user_name') }}
+      key={{ lookup('file', '~/.ssh/id_rsa.pub') }}
 
   - name: SSH configuration file update.
     template: >
-      src="files/conf/sshd_config.j2" 
-      dest="/etc/ssh/sshd_config" 
+      src=files/conf/sshd_config.j2
+      dest=/etc/ssh/sshd_config
       backup=yes 
       owner=0 
       group=0 
@@ -42,7 +42,7 @@
     shell: "/bin/cp /usr/share/zoneinfo/{{ timezone }} /etc/localtime"
 
   - name: Set timezone to {{ timezone }}
-    template: src="files/conf/timezone.j2" dest="/etc/timezone"
+    template: src=files/conf/timezone.j2 dest=/etc/timezone
     notify: update tzdata
 
   handlers:

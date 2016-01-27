@@ -10,3 +10,4 @@ setproctitle
 psycopg2
 Pillow
 pylibmc
+ipython

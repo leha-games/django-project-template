@@ -3,45 +3,45 @@
   vars_files:
     - vars.yml
   gather_facts: false
-  sudo: True
+  become: True
 
   tasks:
   
   - name: Pull sources from repository.
-    git: repo="{{ project_repo }}" dest="{{ project_root }}/code/" version="{{ branch }}"
-    sudo_user: "{{ project_name }}"
+    git: repo={{ project_repo }} dest={{ project_root }}/code/ version={{ branch }}
+    become_user: "{{ project_name }}"
     notify: supervisorctrl restart program
     when: vm == 0
 
   - name: Install python requirements.
-    pip: requirements="{{ project_root }}/code/requirements.txt" virtualenv="{{ project_root }}/virtualenv/"
-    sudo_user: "{{ project_name }}"
+    pip: requirements={{ project_root }}/code/requirements.txt virtualenv={{ project_root }}/virtualenv/ virtualenv_python=python3.4
+    become_user: "{{ project_name }}"
     notify: supervisorctrl restart program
 
   - name: Upload Django local settings.
-    template: src="files/webapp_settings/local_settings.{{ nickname }}.py.j2" dest="{{ project_root }}/code/{{ project_name }}/local_settings.py" mode="0600"
-    sudo_user: "{{ project_name }}"
+    template: src=files/webapp_settings/local_settings.{{ nickname }}.py.j2 dest={{ project_root }}/code/{{ project_name }}/local_settings.py mode=0600
+    become_user: "{{ project_name }}"
     notify: supervisorctrl restart program
 
   - name: Install nginx configuration file.
-    template: src="files/conf/nginx.conf.j2" dest="/etc/nginx/sites-enabled/{{ project_name }}" owner="{{ project_name }}" group="{{ project_name }}" mode="0644"
+    template: src=files/conf/nginx.conf.j2 dest=/etc/nginx/sites-enabled/{{ project_name }} owner={{ project_name }} group={{ project_name }} mode=0644
     notify: restart nginx
 
   - name: Install supervisor configuration file.
-    template: src="files/conf/supervisor.conf.j2" dest="/etc/supervisor/conf.d/{{ project_name }}.conf" owner="{{ project_name }}" group="{{ project_name }}" mode="0644"
+    template: src=files/conf/supervisor.conf.j2 dest=/etc/supervisor/conf.d/{{ project_name }}.conf owner={{ project_name }} group={{ project_name }} mode=0644
     notify: supervisorctrl restart program
 
   - name: Install gunicorn configuration file.
-    template: src="files/conf/gunicorn.conf.py.j2" dest="{{ project_root }}/conf/gunicorn.conf.py" owner="{{ project_name }}" group="{{ project_name }}" mode="0644"
+    template: src=files/conf/gunicorn.conf.py.j2 dest={{ project_root }}/conf/gunicorn.conf.py owner={{ project_name }} group={{ project_name }} mode=0644
     notify: supervisorctrl restart program
 
   - name: Sync Django database.
     shell: "{{ project_root }}/virtualenv/bin/python {{ project_root }}/code/manage.py migrate"
-    sudo_user: "{{ project_name }}"
+    become_user: "{{ project_name }}"
 
   - name: Collect static files.
     shell: "{{ project_root }}/virtualenv/bin/python {{ project_root }}/code/manage.py collectstatic --clear --noinput --ignore=frontend --ignore=tmp"
-    sudo_user: "{{ project_name }}"
+    become_user: "{{ project_name }}"
 
   - name: Ensure services running
     service: name={{ item }} state=started

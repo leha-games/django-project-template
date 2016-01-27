@@ -1,22 +1,5 @@
 project_name: {{ project_name }}
 project_root: /var/webapps/{{ project_name }}
 project_repo: git@bitbucket.org:grialexey/{{ project_name }}.git
-server_hostname: {{ project_name }}.ru
+server_hostname: {{ project_name }}.com
 remote_host: bitbucket.org
-timezone: Europe/Moscow
-system_packages:
-  - build-essential 
-  - nginx
-  - supervisor
-  - git-core
-  - libjpeg-dev
-  - python-virtualenv
-  - libpq-dev
-  - python-dev
-  - postgresql
-  - postgresql-contrib
-  - python-psycopg2
-  - postfix
-  - memcached
-  - libmemcached-dev
-  - libmemcached-tools
