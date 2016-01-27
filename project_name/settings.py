@@ -4,7 +4,7 @@ import os
 BASE_DIR = os.path.dirname(__file__)
 
 
-INSTALLED_APPS = (
+INSTALLED_APPS = [
     # Django contrib apps
     'django.contrib.auth',
     'django.contrib.contenttypes',
@@ -20,9 +20,9 @@ INSTALLED_APPS = (
     # Local apps, referenced via {{ project_name }}.appname
 
     'django.contrib.admin',
-)
+]
 
-MIDDLEWARE_CLASSES = (
+MIDDLEWARE_CLASSES = [
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.common.CommonMiddleware',
     'django.middleware.csrf.CsrfViewMiddleware',
@@ -31,7 +31,7 @@ MIDDLEWARE_CLASSES = (
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
     'django.middleware.security.SecurityMiddleware',
-)
+]
 
 
 TEMPLATES = [
