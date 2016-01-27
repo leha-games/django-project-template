@@ -2,7 +2,7 @@ from django.conf import settings
 from django.conf.urls import include, url
 from django.conf.urls.static import static
 from django.views.generic.base import TemplateView
-from django.views.defaults import page_not_found, server_error
+from django.views import defaults as default_views
 from django.contrib import admin
 
 admin.site.site_header = u'Django administration'
@@ -15,8 +15,10 @@ urlpatterns = [
 
 if settings.DEBUG:
     urlpatterns += [
-        url(r'^404/$', page_not_found),
-        url(r'^500/$', server_error),
+        url(r'^400/$', default_views.bad_request, kwargs={'exception': Exception("Bad Request!")}),
+        url(r'^403/$', default_views.permission_denied, kwargs={'exception': Exception("Permissin Denied")}),
+        url(r'^404/$', default_views.page_not_found, kwargs={'exception': Exception("Page not Found")}),
+        url(r'^500/$', default_views.server_error),
         url(r'^admin/', include(admin.site.urls)),
     ] + static(settings.STATIC_URL, document_root=settings.STATIC_ROOT) \
       + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
