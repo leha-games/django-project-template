@@ -50,4 +50,9 @@
       - supervisor
 
   handlers:
-    - include: handlers.yml
+    - name: restart nginx
+      become: yes
+      service: name=nginx state=restarted enabled=yes
+
+    - name: supervisorctrl restart program
+      supervisorctl: name={{ project_name }} state=restarted

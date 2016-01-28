@@ -19,9 +19,9 @@
     template: >
       src=files/conf/bash_profile.j2
       dest=/home/{{ lookup('file', 'credentials/' + nickname + '/super_user_name') }}/.profile
-      backup=yes 
-      owner={{ lookup('file', 'credentials/' + nickname + '/super_user_name') }} 
-      group={{ lookup('file', 'credentials/' + nickname + '/super_user_name') }} 
+      backup=yes
+      owner={{ lookup('file', 'credentials/' + nickname + '/super_user_name') }}
+      group={{ lookup('file', 'credentials/' + nickname + '/super_user_name') }}
       mode=0644
 
   - name: Add authorized key.
@@ -50,4 +50,6 @@
     - name: update tzdata
       shell: /usr/sbin/dpkg-reconfigure --frontend noninteractive tzdata
 
-    - include: handlers.yml
+    - name: restart ssh
+      become: yes
+      action: service name=ssh state=restarted enabled=yes

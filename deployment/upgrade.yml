@@ -11,6 +11,3 @@
 
   - name: Upgrade server packages.
     apt: upgrade=full
-
-  handlers:
-    - include: handlers.yml

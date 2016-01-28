@@ -72,4 +72,6 @@
     notify: restart nginx
 
   handlers:
-    - include: handlers.yml
+    - name: restart nginx
+      become: yes
+      service: name=nginx state=restarted enabled=yes
