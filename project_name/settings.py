@@ -65,9 +65,9 @@ WSGI_APPLICATION = '{{ project_name }}.wsgi.application'
 
 # Internationalization
 
-LANGUAGE_CODE = 'ru-RU'
+LANGUAGE_CODE = 'en-us'
 
-TIME_ZONE = 'Europe/Moscow'
+TIME_ZONE = 'America/Los_Angeles'
 
 USE_I18N = True
 
