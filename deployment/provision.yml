@@ -45,8 +45,8 @@
 
   - name: Install required system packages.
     apt: pkg={{ item }} state=installed update-cache=yes
-    with_items: system_packages
-    
+    with_items: '{{ system_packages }}'
+
   - name: Create database.
     become_user: postgres
     postgresql_db: >
