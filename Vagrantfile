@@ -15,6 +15,6 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
 
   config.cache.auto_detect = true
 
-  config.vbguest.iso_path = "#{ENV['HOME']}/Downloads/VBoxGuestAdditions.iso"
+  config.vbguest.iso_path = "#{ENV['HOME']}/projects/vagrant/VBoxGuestAdditions.iso"
 
 end

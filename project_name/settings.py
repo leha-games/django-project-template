@@ -133,10 +133,12 @@ class Base(Configuration):
 
     THUMBNAIL_SUBDIR = 'thumbs'
 
+    ACCOUNT_ACTIVATION_DAYS = 7  # One-week activation window; you may, of course, use a different value.
+    REGISTRATION_AUTO_LOGIN = True  # Automatically log the user in.
+    REGISTRATION_FORM = 'crmproject.accounts.forms.CustomRegistrationForm'
+
     CKEDITOR_UPLOAD_PATH = 'ckeditor_uploads/'
-
     CKEDITOR_IMAGE_BACKEND = 'pillow'
-
     CKEDITOR_CONFIGS = {
         'default': {
             'removePlugins': 'stylesheetparser',

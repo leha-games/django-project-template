@@ -1,2 +1,5 @@
 [development]
-192.168.33.10 nickname=development vm=1 branch=master ansible_ssh_user="{{ lookup('file', 'credentials/development/super_user_name') }}" ansible_ssh_port="{{ lookup('file', 'credentials/development/ssh_port') }}" ansible_ssh_private_key_file=.vagrant/machines/default/virtualbox/private_key
+192.168.33.10 nickname=development vm=1 branch=master ansible_ssh_user="{{ lookup('file', '../credentials/development/super_user_name') }}" ansible_ssh_port="{{ lookup('file', '../credentials/development/ssh_port') }}"
+
+[development:vars]
+ansible_password=vagrant

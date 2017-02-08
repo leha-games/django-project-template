@@ -34,4 +34,4 @@ class CustomUserAdmin(UserAdmin):
     filter_horizontal = ('groups', 'user_permissions',)
 
 
-admin.site.register(CustomUserUser, CustomUserAdmin)
+admin.site.register(CustomUser, CustomUserAdmin)
