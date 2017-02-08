@@ -5,11 +5,17 @@ from django.views.generic.base import TemplateView
 from django.views import defaults as default_views
 from django.contrib import admin
 
-admin.site.site_header = u'Django administration'
+admin.site.site_header = u'{{ project_name }} administration'
+
+sitemaps = {
+
+}
 
 urlpatterns = [
     url(r'^$', TemplateView.as_view(template_name="home.html")),
     url(r'^{{ project_name }}admin/', include(admin.site.urls)),
+    url(r'^ckeditor/', include('ckeditor_uploader.urls')),
+    url(r'^sitemap\.xml$', sitemap, {'sitemaps': sitemaps, }, name='django.contrib.sitemaps.views.sitemap'),
 ]
 
 

@@ -1,0 +1,50 @@
+{% extends "base.html" %}
+
+{% load widget_tweaks %}
+{% load staticfiles %}
+
+{% block pagetitle %}Login{% endblock %}
+
+{% block navbar_login_class %}active{% endblock %}
+
+
+{% block content %}
+    <div class="row">
+        <div class="col-sm-6 col-sm-offset-3">
+            <form class="reg-page" method="post" action="">
+
+                {% csrf_token %}
+
+                <div class="reg-header">
+                    <h2>Login to your account</h2>
+                </div>
+
+                {{ form.non_field_errors }}
+
+                <div class="input-group top-buffer">
+                    <span class="input-group-addon"><i class="fa fa-envelope fa-fw"></i></span>
+                    {% render_field form.username placeholder=form.username.label class+="form-control" %}
+                </div>
+                <div class="input-group top-buffer">
+                    <span class="input-group-addon"><i class="fa fa-lock fa-fw"></i></span>
+                    {% render_field form.password placeholder=form.password.label class+="form-control" %}
+                </div>
+
+                <div class="row top-buffer">
+                    <div class="col-md-6 checkbox">
+                    </div>
+                    <div class="col-md-6">
+                        <button class="btn btn-default pull-right" type="submit">Login</button>
+                    </div>
+                </div>
+
+                <hr>
+
+                <h4>Forget your Password ?</h4>
+                <p>no worries, <a class="color-green" href="{% url 'password_reset' %}">click here</a> to reset your password.</p>
+                <h4 style="margin-top: 30px;">Signup</h4>
+                <p><a href="{% url 'registration_register' %}">Signup</a>.</p>
+            </form>
+        </div>
+    </div><!--/row-->
+{% endblock %}

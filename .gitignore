@@ -14,9 +14,10 @@
 
 # Directories #
 ###############
+deployment/environments
 deployment/credentials
 deployment/hosts
-deployment/files/ssh
+deployment/ssh
 logs/
 data/
 .idea/

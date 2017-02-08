@@ -1,0 +1,20 @@
+{% extends "base.html" %}
+
+{% load widget_tweaks %}
+{% load staticfiles %}
+
+
+{% block navbar_login_class %}active{% endblock %}
+
+
+{% block content %}
+    <div class="row">
+        <div class="col-sm-6 col-sm-offset-3">
+            <div class="reg-header">
+                <h2>Locked</h2>
+                <p>You have exceeded the maximum number login attempts.</p>
+                <p>Please try again later.</p>
+            </div>
+        </div>
+    </div><!--/row-->
+{% endblock %}

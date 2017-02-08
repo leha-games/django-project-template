@@ -17,7 +17,7 @@
 
   - name: Superuser bash_profile file update.
     template: >
-      src=files/conf/bash_profile.j2
+      src=configurations/bash_profile_superuser.j2
       dest=/home/{{ lookup('file', 'credentials/' + nickname + '/super_user_name') }}/.profile
       backup=yes
       owner={{ lookup('file', 'credentials/' + nickname + '/super_user_name') }}
@@ -31,7 +31,7 @@
 
   - name: SSH configuration file update.
     template: >
-      src=files/conf/sshd_config.j2
+      src=configurations/sshd_config.j2
       dest=/etc/ssh/sshd_config
       backup=yes 
       owner=0 
@@ -43,7 +43,7 @@
     shell: "/bin/cp /usr/share/zoneinfo/{{ timezone }} /etc/localtime"
 
   - name: Set timezone to {{ timezone }}
-    template: src=files/conf/timezone.j2 dest=/etc/timezone
+    template: src=configurations/timezone.j2 dest=/etc/timezone
     notify: update tzdata
 
   handlers:

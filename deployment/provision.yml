@@ -18,6 +18,15 @@
       password={{ lookup('file', 'credentials/' + nickname + '/project_user_password_crypted') }} state=present
       shell=/bin/bash
 
+  - name: Project user bash_profile file update.
+    template: >
+      src=configurations/bash_profile_project_user.j2
+      dest={{ project_root }}/home/.profile
+      backup=yes
+      owner={{ project_name }}
+      group={{ project_name }}
+      mode=0644
+
   - name: Chown for the project directory.
     file: state=directory path={{ project_root }} owner={{ project_name }} group={{ project_name }}
 
@@ -30,7 +39,7 @@
     when: vm == 0
 
   - name: Upload repository SSH key.
-    copy: src=files/ssh/id_rsa dest={{ project_root }}/home/.ssh/id_rsa mode=0600 owner={{ project_name }} group={{ project_name }}
+    copy: src=ssh/id_rsa dest={{ project_root }}/home/.ssh/id_rsa mode=0600 owner={{ project_name }} group={{ project_name }}
     when: vm == 0
 
   - name: Create project directories.
@@ -40,8 +49,9 @@
       - "code"
       - "conf"
       - "logs"
-      - "www/static"
-      - "www/media"
+      - "env"
+      - "public/static"
+      - "public/media"
 
   - name: Install required system packages.
     apt: pkg={{ item }} state=installed update-cache=yes
@@ -63,7 +73,7 @@
     postgresql_user: >
       db={{ project_name }} 
       name={{ project_name }} 
-      password="{{ lookup('password', 'credentials/' + nickname + '/postgres_password length=20') }}"
+      password="{{ lookup('password', 'environments/' + nickname + '/DJANGO_DATABASE_PASSWORD length=20') }}"
     tags: 
       - database 
 

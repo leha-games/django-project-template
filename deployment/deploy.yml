@@ -8,7 +8,7 @@
   tasks:
   
   - name: Pull sources from repository.
-    git: repo={{ project_repo }} dest={{ project_root }}/code/ version={{ branch }}
+    git: repo={{ project_repo }} dest={{ project_root }}/code/ version={{ branch }} force=yes
     become_user: "{{ project_name }}"
     notify: supervisorctrl restart program
     when: vm == 0
@@ -18,29 +18,33 @@
     become_user: "{{ project_name }}"
     notify: supervisorctrl restart program
 
-  - name: Upload Django local settings.
-    template: src=files/webapp_settings/local_settings.{{ nickname }}.py.j2 dest={{ project_root }}/code/{{ project_name }}/local_settings.py mode=0600
-    become_user: "{{ project_name }}"
+  - name: Copy environment variables.
+    copy:
+      src=environments/{{ nickname }}/
+      dest={{ project_root }}/env/
+      mode=0600
+      owner={{ project_name }}
+      group={{ project_name }}
     notify: supervisorctrl restart program
 
   - name: Install nginx configuration file.
-    template: src=files/conf/nginx.conf.j2 dest=/etc/nginx/sites-enabled/{{ project_name }} owner={{ project_name }} group={{ project_name }} mode=0644
+    template: src=configurations/nginx.conf.j2 dest=/etc/nginx/sites-enabled/{{ project_name }} owner={{ project_name }} group={{ project_name }} mode=0644
     notify: restart nginx
 
   - name: Install supervisor configuration file.
-    template: src=files/conf/supervisor.conf.j2 dest=/etc/supervisor/conf.d/{{ project_name }}.conf owner={{ project_name }} group={{ project_name }} mode=0644
+    template: src=configurations/supervisor.conf.j2 dest=/etc/supervisor/conf.d/{{ project_name }}.conf owner={{ project_name }} group={{ project_name }} mode=0644
     notify: supervisorctrl restart program
 
   - name: Install gunicorn configuration file.
-    template: src=files/conf/gunicorn.conf.py.j2 dest={{ project_root }}/conf/gunicorn.conf.py owner={{ project_name }} group={{ project_name }} mode=0644
+    template: src=configurations/gunicorn.conf.py.j2 dest={{ project_root }}/conf/gunicorn.conf.py owner={{ project_name }} group={{ project_name }} mode=0644
     notify: supervisorctrl restart program
 
   - name: Sync Django database.
-    shell: "{{ project_root }}/virtualenv/bin/python {{ project_root }}/code/manage.py migrate"
+    shell: "{{ project_root }}/virtualenv/bin/envdir {{ project_root }}/env {{ project_root }}/virtualenv/bin/python {{ project_root }}/code/manage.py migrate"
     become_user: "{{ project_name }}"
 
   - name: Collect static files.
-    shell: "{{ project_root }}/virtualenv/bin/python {{ project_root }}/code/manage.py collectstatic --clear --noinput --ignore=frontend --ignore=tmp"
+    shell: "{{ project_root }}/virtualenv/bin/envdir {{ project_root }}/env {{ project_root }}/virtualenv/bin/python {{ project_root }}/code/manage.py collectstatic --clear --noinput --ignore=frontend --ignore=tmp"
     become_user: "{{ project_name }}"
 
   - name: Ensure services running
