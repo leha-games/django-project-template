@@ -11,7 +11,7 @@
 alias manage.py='{{ project_root }}/virtualenv/bin/envdir {{ project_root }}/env {{ project_root }}/virtualenv/bin/python {{ project_root }}/code/manage.py'
 alias run_dev_server='manage.py runserver 0.0.0.0:8001'
 alias pip='{{ project_root }}/virtualenv/bin/pip'
-alias freeze_requirements='pip freeze > /var/webapps/fighters/code/requirements.txt'
+alias freeze_requirements='pip freeze > {{ project_root }}/code/requirements.txt'
 
 LANGUAGE=en_US.utf8
 LC_ALL=en_US.utf8
