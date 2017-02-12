@@ -135,7 +135,7 @@ class Base(Configuration):
 
     ACCOUNT_ACTIVATION_DAYS = 7  # One-week activation window; you may, of course, use a different value.
     REGISTRATION_AUTO_LOGIN = True  # Automatically log the user in.
-    REGISTRATION_FORM = 'crmproject.accounts.forms.CustomRegistrationForm'
+    REGISTRATION_FORM = '{{ project_name }}.accounts.forms.CustomRegistrationForm'
 
     CKEDITOR_UPLOAD_PATH = 'ckeditor_uploads/'
     CKEDITOR_IMAGE_BACKEND = 'pillow'
