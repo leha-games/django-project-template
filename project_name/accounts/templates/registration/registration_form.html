@@ -24,31 +24,31 @@
                 <div class="row top-buffer">
                     <div class="col-sm-6 pull-down">
                         {{ form.first_name.errors }}
-                        <label>{{ form.first_name.label }} <span class="color-red">*</span></label>
+                        {{ form.first_name.label_tag }}
                         {% render_field form.first_name class+="form-control margin-bottom-20" %}
                     </div>
                     <div class="col-sm-6 pull-down">
                         {{ form.last_name.errors }}
-                        <label>{{ form.last_name.label }} <span class="color-red">*</span></label>
+                        {{ form.last_name.label_tag }}
                         {% render_field form.last_name class+="form-control margin-bottom-20" %}
                     </div>
                 </div>
 
                 <div class="top-buffer">
                     {{ form.email.errors }}
-                    <label>{{ form.email.label }} <span class="color-red">*</span></label>
+                    {{ form.email.label_tag }}
                     {% render_field form.email class+="form-control margin-bottom-20" %}
                 </div>
 
                 <div class="row top-buffer">
                     <div class="col-sm-6 pull-down">
                         {{ form.password1.errors }}
-                        <label>Пароль <span class="color-red">*</span></label>
+                        {{ form.password1.label_tag }}
                         {% render_field form.password1 class+="form-control margin-bottom-20" %}
                     </div>
                     <div class="col-sm-6 pull-down">
                         {{ form.password2.errors }}
-                        <label>Confirm Password <span class="color-red">*</span></label>
+                        {{ form.password2.label_tag }}
                         {% render_field form.password2 class+="form-control margin-bottom-20" %}
                     </div>
                 </div>
