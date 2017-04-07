@@ -3,7 +3,7 @@ Installation
 
 Starting development
 --------------------
-0. Before anything else install Ansible, Vagrant, and two vagrant plugins:  
+0. Install Ansible 2, Vagrant, and two vagrant plugins:  
    `vagrant plugin install vagrant-cachier`  
    `vagrant plugin install vagrant-vbguest`  
    Download VBoxGuestAdditions.iso for your version of VirtualBox
@@ -15,27 +15,22 @@ Starting development
    `ansible-playbook deployment/provision.yml -i deployment/hosts/development`
 5. Uncomment this line in Vagrantfile to allow syncing a project directory:  
    `config.vm.synced_folder ".", "/var/webapps/{{ project_name }}/code", owner: "{{ project_name }}", group: "{{ project_name }}"`
-6. Now you have to reload vagrant, to sync your project directory with virtual server:  
+6. Reload vagrant to sync project directory with virtual server:  
    `vagrant reload`
-7. Set absolute paths in `deployment/hosts/` files  
-7. Make a deploy of project:  
+7. Deploy of project:  
    `ansible-playbook deployment/deploy.yml -i deployment/hosts/development`
 8. SSH to virtual server:  
    `vagrant ssh`
 9. Switch to project user:  
    `sudo su -l {{ project_name }}`
 10. Create website superuser with username `admin` and password `admin` for convention:  
-   `/var/webapps/{{ project_name }}/virtualenv/bin/python /var/webapps/{{ project_name }}/code/manage.py createsuperuser`
+   `manage.py createsuperuser`
 11. Freeze installed python packages in requirements.txt file:  
-    `/var/webapps/{{ project_name }}/virtualenv/bin/pip freeze > /var/webapps/{{ project_name }}/code/requirements.txt`
+    `freeze_requirements`
 12. Start django development server:  
-    `/var/webapps/{{ project_name }}/virtualenv/bin/python /var/webapps/{{ project_name }}/code/manage.py runserver 0.0.0.0:8001`
+    `run_dev_server`
 13. Now you can see your app running in browser:  
     `http://127.0.0.1:8002/`
-14. Install static files libs (preferably I do this from local machine, not from virtual server):
-    `cd {{ project_name }}/static/frontend`  
-    `sudo npm install --save-dev`  
-    `bower install`
 
 
 Initial remote server setup
