@@ -7,7 +7,7 @@ Start development on macOS
 1. Create virtualenv:  
    `mkvirtualenv --python=/Library/Frameworks/Python.framework/Versions/3.6/bin/python3 {{ project_name }}`
 2. Create database:  
-   `psql -f create_development_database.sql`
+   `psql -f deployment/configurations/create_development_database.sql`
 3. Install Python packages:  
    `pip install -r requirements.txt`
 4. Save Python requirements:  
