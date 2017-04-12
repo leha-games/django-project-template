@@ -1,8 +1,24 @@
 Installation
 ============
 
-Starting development
---------------------
+Start development on macOS
+--------------------------
+0. Install pip, virtualenv, virtualenvwrapper, Postgres
+1. Create virtualenv:  
+   `mkvirtualenv --python=/Library/Frameworks/Python.framework/Versions/3.6/bin/python3 {{ project_name }}`
+2. Create database:  
+   `psql -f create_development_database.sql`
+3. Set alias to easy run manage.py:  
+   `alias manage.py='envdir deployment/environments/development python manage.py`
+4. Create superuser:
+   `manage.py migrate`  
+   `manage.py createsuperuser`
+5. Run dev server:  
+   `manage.py rundevserver`
+
+
+Starting development with Vagrant
+---------------------------------
 0. Install Ansible 2, Vagrant, and two vagrant plugins:  
    `vagrant plugin install vagrant-cachier`  
    `vagrant plugin install vagrant-vbguest`  
