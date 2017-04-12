@@ -16,7 +16,6 @@ urlpatterns = [
     url(r'^$', TemplateView.as_view(template_name="home.html")),
     url(r'^accounts/', include('django.contrib.auth.urls')),
     url(r'^accounts/', include('registration.backends.default.urls')),
-    url(r'^{{ project_name }}admin/', include(admin.site.urls)),
     url(r'^ckeditor/', include('ckeditor_uploader.urls')),
     url(r'^sitemap\.xml$', sitemap, {'sitemaps': sitemaps, }, name='django.contrib.sitemaps.views.sitemap'),
 ]
@@ -31,3 +30,8 @@ if settings.DEBUG:
         url(r'^admin/', include(admin.site.urls)),
     ] + static(settings.STATIC_URL, document_root=settings.STATIC_ROOT) \
       + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
+else:
+    urlpatterns += [
+        url(r'^{{ project_name }}admin/', include(admin.site.urls)),
+    ]
+
