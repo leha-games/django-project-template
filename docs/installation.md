@@ -21,7 +21,7 @@ Start development on macOS
 7. Create superuser:
    `manage.py createsuperuser`
 8. Run dev server:  
-   `manage.py rundevserver`
+   `manage.py runserver`
 
 
 Starting development with Vagrant
