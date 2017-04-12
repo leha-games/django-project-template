@@ -3,17 +3,22 @@ Installation
 
 Start development on macOS
 --------------------------
-0. Install pip, virtualenv, virtualenvwrapper, Postgres
+0. Install pip, virtualenv, virtualenvwrapper, Postgres. Switch to project directory
 1. Create virtualenv:  
    `mkvirtualenv --python=/Library/Frameworks/Python.framework/Versions/3.6/bin/python3 {{ project_name }}`
 2. Create database:  
    `psql -f create_development_database.sql`
-3. Set alias to easy run manage.py:  
+3. Install Python packages:  
+   `pip install -r requirements.txt`
+4. Save Python requirements:  
+   `pip freeze > requirements.txt`
+5. Set alias (to easy run manage.py):  
    `alias manage.py='envdir deployment/environments/development python manage.py`
-4. Create superuser:
+6. Migrate database:  
    `manage.py migrate`  
+7. Create superuser:
    `manage.py createsuperuser`
-5. Run dev server:  
+8. Run dev server:  
    `manage.py rundevserver`
 
 
