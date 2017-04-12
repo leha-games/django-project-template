@@ -14,6 +14,8 @@ Start development on macOS
    `pip freeze > requirements.txt`
 5. Set alias (to easy run manage.py):  
    `alias manage.py='envdir deployment/environments/development python manage.py`
+6. Make migration for accounts app, or remove this app:  
+   `manage.py makemigrations accounts`
 6. Migrate database:  
    `manage.py migrate`  
 7. Create superuser:
