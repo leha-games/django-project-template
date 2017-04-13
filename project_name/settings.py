@@ -192,6 +192,12 @@ class Base(Configuration):
 class Dev(Base):
     DEBUG = True
 
+    ROOT_DIR = Path(__file__).ancestor(2)
+    DATA_DIR = ROOT_DIR.child('data')
+    PUBLIC_DIR = DATA_DIR.child('public')
+    STATIC_ROOT = PUBLIC_DIR.child('static')
+    MEDIA_ROOT = PUBLIC_DIR.child('media')
+
     INTERNAL_IPS = (
         '127.0.0.1',
         '10.0.2.2',
