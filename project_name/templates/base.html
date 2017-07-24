@@ -83,9 +83,8 @@
     </footer>
     {% endblock %}
 
-    {% if not debug and not user.is_superuser %}
-        {% comment %} Analytics {% endcomment %}
-    {% endif %}
+
+    {% include 'analytics.html' %}
 </body>
 </html>
 
