@@ -114,7 +114,6 @@ class Base(Configuration):
     MEDIA_ROOT = PUBLIC_DIR.child('media')
     MEDIA_URL = '/media/'
 
-
     SESSION_ENGINE = "django.contrib.sessions.backends.cached_db"
 
     LOGIN_REDIRECT_URL = '/'
