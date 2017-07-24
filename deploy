@@ -1,0 +1,1 @@
+ansible-playbook deployment/deploy.yml -i deployment/hosts/$1 -K
