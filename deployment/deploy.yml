@@ -14,7 +14,7 @@
     when: vm == 0
 
   - name: Install python requirements.
-    pip: requirements={{ project_root }}/code/requirements.txt virtualenv={{ project_root }}/virtualenv/ virtualenv_python=python3.4
+    pip: requirements={{ project_root }}/code/requirements.txt virtualenv={{ project_root }}/virtualenv/ virtualenv_python=python3
     become_user: "{{ project_name }}"
     notify: supervisorctrl restart program
 
