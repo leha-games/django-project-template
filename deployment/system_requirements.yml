@@ -13,7 +13,7 @@ system_packages:
   - python-dev
   - postgresql
   - postgresql-contrib
-  - python-psycopg2
+  - python3-psycopg2
   - postfix
   - memcached
   - libmemcached-dev
