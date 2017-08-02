@@ -7,7 +7,6 @@ from unipath import Path
 class Base(Configuration):
 
     ROOT_DIR = Path(__file__).ancestor(3)
-
     PROJECT_DIR = Path(__file__).parent
 
     INSTALLED_APPS = [
@@ -49,7 +48,6 @@ class Base(Configuration):
         'django.middleware.clickjacking.XFrameOptionsMiddleware',
         'django.contrib.redirects.middleware.RedirectFallbackMiddleware',
     ]
-
 
     TEMPLATES = [
         {
