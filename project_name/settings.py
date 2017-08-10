@@ -6,7 +6,8 @@ from unipath import Path
 
 class Base(Configuration):
 
-    ROOT_DIR = Path(__file__).ancestor(3)
+    ROOT_DIR = Path(__file__).ancestor(2)
+
     PROJECT_DIR = Path(__file__).parent
 
     INSTALLED_APPS = [
@@ -105,12 +106,10 @@ class Base(Configuration):
     USE_L10N = True
     USE_TZ = True
     
-    PUBLIC_DIR = ROOT_DIR.child('public')
-    STATIC_ROOT = PUBLIC_DIR.child('static')
     STATIC_URL = '/static/'
-    STATICFILES_DIRS = [PROJECT_DIR.child('static'), ]
-    MEDIA_ROOT = PUBLIC_DIR.child('media')
     MEDIA_URL = '/media/'
+    
+    STATICFILES_DIRS = [PROJECT_DIR.child('static'), ]
 
     SESSION_ENGINE = "django.contrib.sessions.backends.cached_db"
 
@@ -189,9 +188,7 @@ class Base(Configuration):
 class Dev(Base):
     DEBUG = True
 
-    ROOT_DIR = Path(__file__).ancestor(2)
-    DATA_DIR = ROOT_DIR.child('data')
-    PUBLIC_DIR = DATA_DIR.child('public')
+    PUBLIC_DIR = Base.ROOT_DIR.child('public')
     STATIC_ROOT = PUBLIC_DIR.child('static')
     MEDIA_ROOT = PUBLIC_DIR.child('media')
 
@@ -227,6 +224,10 @@ class Prod(Base):
     DEBUG = False
 
     ALLOWED_HOSTS = ['*', ]
+
+    PUBLIC_DIR = Base.ROOT_DIR.parent.child('public')
+    STATIC_ROOT = PUBLIC_DIR.child('static')
+    MEDIA_ROOT = PUBLIC_DIR.child('media')
 
     CACHES = {
         'default': {
