@@ -9,9 +9,9 @@
 #umask 022
 
 alias env_run='{{ project_root }}/virtualenv/bin/envdir {{ project_root }}/env'
-alias project_manage='{{ project_root }}/virtualenv/bin/python {{ project_root }}/code/manage.py'
-alias project_scrapy='{{ project_root }}/virtualenv/bin/scrapy'
-alias project_celery='{{ project_root }}/virtualenv/bin/celery'
+alias project_manage='env_run {{ project_root }}/virtualenv/bin/python {{ project_root }}/code/manage.py'
+alias project_scrapy='env_run {{ project_root }}/virtualenv/bin/scrapy'
+alias project_celery='env_run {{ project_root }}/virtualenv/bin/celery'
 alias project_run='project_manage runserver 0.0.0.0:8001'
 alias project_pip='{{ project_root }}/virtualenv/bin/pip'
 alias project_freeze_requirements='project_pip freeze > {{ project_root }}/code/requirements.txt'

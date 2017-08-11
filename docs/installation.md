@@ -47,11 +47,11 @@ Starting development with Vagrant
 9. Switch to project user:  
    `sudo su -l {{ project_name }}`
 10. Create website superuser with username `admin` and password `admin` for convention:  
-   `manage.py createsuperuser`
+   `project_manage createsuperuser`
 11. Freeze installed python packages in requirements.txt file:  
-    `freeze_requirements`
+    `project_freeze_requirements`
 12. Start django development server:  
-    `run_dev_server`
+    `project_run`
 13. Now you can see your app running in browser:  
     `http://127.0.0.1:8002/`
 
