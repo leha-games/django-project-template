@@ -74,7 +74,7 @@ class Base(Configuration):
 
     DATABASES = {
         'default': {
-            'ENGINE': 'django.db.backends.postgresql_psycopg2',
+            'ENGINE': 'django.db.backends.postgresql',
             'NAME': os.environ['DJANGO_DATABASE_NAME'],
             'USER': os.environ['DJANGO_DATABASE_USER_NAME'],
             'PASSWORD': os.environ['DJANGO_DATABASE_PASSWORD'],
