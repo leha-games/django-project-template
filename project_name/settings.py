@@ -248,7 +248,7 @@ class Prod(Base):
             'file': {
                 'level': 'ERROR',
                 'class': 'logging.FileHandler',
-                'filename': Base.ROOT_DIR.child('logs', 'django.error.log'),
+                'filename': Base.ROOT_DIR.parent.child('logs', 'django.error.log'),
                 'formatter': 'verbose',
             },
             'mail_admins': {
