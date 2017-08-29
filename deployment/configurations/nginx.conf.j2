@@ -42,10 +42,12 @@ server {
 
     location /static/ {  
         alias {{ project_root }}/public/static/;  
+        expires 7d;
     }  
 
     location /media/ {  
         alias {{ project_root }}/public/media/;  
+        expires 30d;
     }  
 
     location  /robots.txt {
