@@ -94,9 +94,7 @@ class Base(Configuration):
 
     WSGI_APPLICATION = '{{ project_name }}.wsgi.application'
 
-    ALLOWED_HOSTS = [
-
-    ]
+    ALLOWED_HOSTS = values.ListValue()
 
     SECRET_KEY = values.Value()
 
@@ -222,8 +220,6 @@ class Dev(Base):
 
 class Prod(Base):
     DEBUG = False
-
-    ALLOWED_HOSTS = ['*', ]
 
     PUBLIC_DIR = Base.ROOT_DIR.parent.child('public')
     STATIC_ROOT = PUBLIC_DIR.child('static')
