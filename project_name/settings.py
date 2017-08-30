@@ -121,8 +121,8 @@ class Base(Configuration):
     EMAIL_HOST = values.Value()
     EMAIL_HOST_USER = values.EmailValue()
     EMAIL_PORT = values.IntegerValue()
-    DEFAULT_FROM_EMAIL = values.EmailValue()
-    SERVER_EMAIL = values.EmailValue()
+    DEFAULT_FROM_EMAIL = values.Value()
+    SERVER_EMAIL = values.Value()
     EMAIL_HOST_PASSWORD = values.Value()
 
     THUMBNAIL_SUBDIR = 'thumbs'
