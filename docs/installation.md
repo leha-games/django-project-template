@@ -77,15 +77,28 @@ Initial remote server setup
    `ansible-playbook deployment/initial.yml -i deployment/hosts/initial --ask-pass -c paramiko`  
 6. Update system packages and upgrade them if needed:  
    `ansible-playbook deployment/upgrade.yml -i deployment/hosts/production -K`  
-7. Do project provision of server:  
+7. Do project provision of the server:  
    `ansible-playbook deployment/provision.yml -i deployment/hosts/production -K`  
-8. Make first deploy of project:  
+8. Make first deploy of the project:  
    `ansible-playbook deployment/deploy.yml -i deployment/hosts/production -K`
-9. Login on remote server and create superuser;
-10. Enjoy your project!
+
+
+Server setup checklist
+----------------------
+* Create site superuser
+* Set site domain and site name (Django sites framework)
+* Set up HTTPS
+* Set up mail delivery: SPF record, Reverse DNS, DKMI, DMARC, TLS
+* Set up backup
+* Set up error logging. Sentry
+
+
 
 `sudo locale-gen ru_RU.UTF-8`
 `sudo locale-gen en_US.UTF-8`
+
+
+
 
 
 
