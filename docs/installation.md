@@ -94,24 +94,24 @@ Server setup checklist
 
 
 
-`sudo locale-gen ru_RU.UTF-8`
-`sudo locale-gen en_US.UTF-8`
-
-
-
 
 
 
 Useful commands
 ---------------
-`vagrant ssh`  
-`sudo su -l {{ project_name }}`  
-`/var/webapps/{{ project_name }}/virtualenv/bin/python /var/webapps/{{ project_name }}/code/manage.py createsuperuser`  
-`/var/webapps/{{ project_name }}/virtualenv/bin/python /var/webapps/{{ project_name }}/code/manage.py shell`  
-`/var/webapps/{{ project_name }}/virtualenv/bin/python /var/webapps/{{ project_name }}/code/manage.py runserver 0.0.0.0:8001`  
+`vagrant ssh`
+`sudo su -l {{ project_name }}`
+`project_run`
+`project_manage createsuperuser`
+`project_manage shell`
+`project_pip`
+`project_freeze_requirements`
 
-`/var/webapps/{{ project_name }}/virtualenv/bin/pip install <package>`  
-`/var/webapps/{{ project_name }}/virtualenv/bin/pip freeze > /var/webapps/{{ project_name }}/code/requirements.txt`
+`sudo locale-gen ru_RU.UTF-8`
+`sudo locale-gen en_US.UTF-8`
+
+`sudo service postfix restart`
+`sudo supervisorctl status`
 
 
 Passwords crypt
