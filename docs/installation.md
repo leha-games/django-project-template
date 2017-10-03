@@ -104,6 +104,7 @@ Useful commands
 `project_run`
 `project_manage createsuperuser`
 `project_manage shell`
+`project_manage dumpdata --indent=2 --exclude=admin.logentry --exclude=auth.permission --exclude=contenttypes --exclude=sessions.session > db.json`  
 `project_pip`
 `project_freeze_requirements`
 
