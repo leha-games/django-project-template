@@ -22,7 +22,7 @@ class Base(Configuration):
         'django.contrib.redirects',
 
         # Third-party apps, patches, fixes
-        'easy_thumbnails',
+        'imagekit',
         'widget_tweaks',
         'ckeditor',
         'ckeditor_uploader',

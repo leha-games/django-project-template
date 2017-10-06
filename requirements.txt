@@ -1,12 +1,11 @@
 Django
-easy-thumbnails
 pytils
 django-axes
 django-ckeditor
-django-filter
-django-debug-toolbar
 django-configurations
-django-registration-redux
+django-debug-toolbar
+django-filter
+django-imagekit
 django-widget-tweaks
 djangorestframework
 envdir
