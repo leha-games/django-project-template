@@ -9,5 +9,11 @@
   - name: Update server packages.
     apt: update_cache=yes cache_valid_time=3600
 
+  - name: FIX for Ubuntu 16.04 LTS. It doesn't come with certain modules, required by ansible
+    apt: pkg={{ item }} state=installed update-cache=yes
+    with_items:
+      - python-minimal
+      - aptitude
+
   - name: Upgrade server packages.
     apt: upgrade=full
