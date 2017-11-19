@@ -1,3 +1,9 @@
+server {
+    listen 80;
+    server_name www.{{ server_hostname }};
+    return 301 $scheme://{{ server_hostname }}$request_uri;
+}
+
 server {  
 
     server_name {{ server_hostname }};  
