@@ -6,7 +6,7 @@ from django.views import defaults as default_views
 from django.contrib import admin
 from django.contrib.sitemaps.views import sitemap
 
-admin.site.site_header = u'{{ project_name }} administration'
+admin.site.site_header = '{{ project_name }} administration'
 
 sitemaps = {
 
@@ -27,11 +27,11 @@ if settings.DEBUG:
         url(r'^403/$', default_views.permission_denied, kwargs={'exception': Exception("Permissin Denied")}),
         url(r'^404/$', default_views.page_not_found, kwargs={'exception': Exception("Page not Found")}),
         url(r'^500/$', default_views.server_error),
-        url(r'^admin/', include(admin.site.urls)),
+        url(r'^admin/', admin.site.urls),
     ] + static(settings.STATIC_URL, document_root=settings.STATIC_ROOT) \
       + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
 else:
     urlpatterns += [
-        url(r'^{{ project_name }}admin/', include(admin.site.urls)),
+        url(r'^{{ project_name }}admin/', admin.site.urls),
     ]
 
