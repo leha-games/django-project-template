@@ -1,6 +1,7 @@
 timezone: America/Los_Angeles
 system_packages:
   - build-essential
+  - software-properties-common
   - vim
   - acl
   - nginx
