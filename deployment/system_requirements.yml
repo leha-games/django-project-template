@@ -1,4 +1,4 @@
-timezone: America/Los_Angeles
+timezone: Europe/Moscow
 system_packages:
   - build-essential
   - software-properties-common

@@ -2,6 +2,7 @@ Django
 pytils
 django-axes
 django-ckeditor
+django-compressor
 django-configurations
 django-debug-toolbar
 django-filter

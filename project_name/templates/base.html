@@ -1,24 +1,21 @@
 <!doctype html>
-<html class="html">
+<html>
 <head>
     {% load static %}
-    <meta charset="UTF-8">
+    <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">      
     <title>{% block pagetitle %}{% if page_title %}{{ page_title }}{% endif %}{% endblock %}</title>
     
-    <link rel="stylesheet" href="{% static 'css/custom.css' %}?{% now "U" %}"/>
+    {% load compress %}
 
-    {% block extrastyles %}{% endblock %}
-
-    <script src="{% static 'libs/jquery-3.1.1.min.js' %}"></script>
-    <script src="{% static 'libs/lodash.min.js' %}"></script>
-    <script src="{% static 'js/global.js' %}?{% now "U" %}"></script>
+    {% compress css inline %}
+    <link rel="stylesheet" href="{% static 'css/base.css' %}"/>
+    {% endcompress %}
     
-    {% block extrascripts %}{% endblock %}
-
     {% block extrahead %}{% endblock %}
 </head>
 <body class="Page">
+    {% include 'analytics.html' %}
 
     {% block header %}
     <header class="Header">
@@ -41,11 +38,6 @@
                                 Log in
                             </a>
                         </li>
-                        <li>
-                            <a href="{% url 'registration_register' %}" class="{% block header_menu_link_register_class %}{% endblock %}">
-                                Sign up
-                            </a>
-                        </li>
                     {% endif %}
                 </ul>
             </div>
@@ -54,20 +46,33 @@
     {% endblock %}
 
 
-    <section class="container-fluid">
+    <section class="container">
         {% block content %}
         {% endblock %}
     </section>
 
     {% block footer %}
     <footer class="Footer">
-        <div class="container-fluid text-center">
+        <div class="container text-center">
         </div>
     </footer>
     {% endblock %}
 
+    {% compress css %}
+    {% block extrastyles %}{% endblock %}
+    {% endcompress %}
 
-    {% include 'analytics.html' %}
+    {% compress js %}
+    <script src="{% static 'libs/jquery-3.1.1.min.js' %}"></script>
+    <script src="{% static 'libs/lodash.min.js' %}"></script>
+    <script src="{% static 'js/global.js' %}"></script>
+    {% endcompress %}
+
+    {% compress js %}
+    {% block extrascripts %}{% endblock %}
+    {% endcompress %}
+
+    {% block extrabody %}{% endblock %}
 </body>
 </html>
 

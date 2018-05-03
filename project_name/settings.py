@@ -28,13 +28,13 @@ class Base(Configuration):
         'ckeditor_uploader',
         'pytils',
         'axes',
+        'compressor',
         #'rest_framework',
         #'debug_toolbar',
 
         # Local apps, referenced via '{{ project_name }}.appname'
         '{{ project_name }}.accounts',
 
-        'registration',
         'django.contrib.auth',
         'django.contrib.admin',
     ]
@@ -98,8 +98,8 @@ class Base(Configuration):
 
     SECRET_KEY = values.Value()
 
-    LANGUAGE_CODE = 'en-us'
-    TIME_ZONE = 'America/Los_Angeles'
+    LANGUAGE_CODE = 'ru-RU'
+    TIME_ZONE = 'Europe/Moscow'
     USE_I18N = True
     USE_L10N = True
     USE_TZ = True
@@ -108,6 +108,12 @@ class Base(Configuration):
     MEDIA_URL = '/media/'
     
     STATICFILES_DIRS = [PROJECT_DIR.child('static'), ]
+
+    STATICFILES_FINDERS = (
+        'django.contrib.staticfiles.finders.FileSystemFinder',
+        'django.contrib.staticfiles.finders.AppDirectoriesFinder',
+        'compressor.finders.CompressorFinder',
+    )
 
     SESSION_ENGINE = "django.contrib.sessions.backends.cached_db"
 
@@ -126,10 +132,6 @@ class Base(Configuration):
     EMAIL_HOST_PASSWORD = values.Value()
 
     THUMBNAIL_SUBDIR = 'thumbs'
-
-    ACCOUNT_ACTIVATION_DAYS = 7  # One-week activation window; you may, of course, use a different value.
-    REGISTRATION_AUTO_LOGIN = True  # Automatically log the user in.
-    REGISTRATION_FORM = '{{ project_name }}.accounts.forms.CustomRegistrationForm'
 
     CKEDITOR_UPLOAD_PATH = 'ckeditor_uploads/'
     CKEDITOR_IMAGE_BACKEND = 'pillow'

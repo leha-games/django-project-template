@@ -2,23 +2,7 @@ from django.contrib.auth import password_validation
 from django.utils.translation import ugettext, ugettext_lazy as _
 from django.contrib.auth.forms import UserCreationForm
 from django import forms
-from registration.forms import RegistrationForm
 from .models import CustomUser
-
-
-class CustomRegistrationForm(RegistrationForm):
-
-    class Meta:
-        model = CustomUser
-        fields = ('email', 'first_name', 'last_name', )
-
-    def __init__(self, *args, **kwargs):
-        super(CustomRegistrationForm, self).__init__(*args, **kwargs)
-        for key in self.fields:
-            self.fields[key].required = True
-
-    def clean_email(self):
-        return self.cleaned_data['email'].lower()
 
 
 class CustomUserCreationForm(forms.ModelForm):
