@@ -22,6 +22,7 @@ logs/
 data/
 .idea/
 .vagrant/
+.vscode/
 
 # Specific files #
 ##################
