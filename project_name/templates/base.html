@@ -10,6 +10,7 @@
 
     {% compress css inline %}
     <link rel="stylesheet" href="{% static 'css/base.css' %}"/>
+    {% block extrastyles %}{% endblock %}
     {% endcompress %}
     
     {% block extrahead %}{% endblock %}
@@ -20,7 +21,7 @@
     {% block header %}
     <header class="Header">
         <nav class="navbar Header-navbar">
-            <div class="container-fluid">
+            <div class="container">
                 <a class="Header-site-title" href="/">Home</a>
 
                 <ul class="nav navbar-nav navbar-right Header-menu">
@@ -58,9 +59,25 @@
     </footer>
     {% endblock %}
 
+    <noscript id="deferred-styles">
     {% compress css %}
-    {% block extrastyles %}{% endblock %}
+    {% block deferred_styles %}{% endblock %}
     {% endcompress %}
+    </noscript>
+
+    <script>
+        var loadDeferredStyles = function() {
+            var addStylesNode = document.getElementById("deferred-styles");
+            var replacement = document.createElement("div");
+            replacement.innerHTML = addStylesNode.textContent;
+            document.body.appendChild(replacement)
+            addStylesNode.parentElement.removeChild(addStylesNode);
+        };
+        var raf = window.requestAnimationFrame || window.mozRequestAnimationFrame ||
+            window.webkitRequestAnimationFrame || window.msRequestAnimationFrame;
+        if (raf) raf(function() { window.setTimeout(loadDeferredStyles, 0); });
+        else window.addEventListener('load', loadDeferredStyles);
+    </script>
 
     {% compress js %}
     <script src="{% static 'libs/jquery-3.1.1.min.js' %}"></script>
