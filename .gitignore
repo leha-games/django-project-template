@@ -20,6 +20,7 @@ deployment/hosts
 deployment/ssh
 logs/
 data/
+public/
 .idea/
 .vagrant/
 .vscode/
