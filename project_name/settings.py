@@ -20,6 +20,7 @@ class Base(Configuration):
         'django.contrib.sites',
         'django.contrib.sitemaps',
         'django.contrib.redirects',
+        'django.contrib.flatpages',
 
         # Third-party apps, patches, fixes
         'imagekit',
@@ -48,6 +49,7 @@ class Base(Configuration):
         'django.contrib.messages.middleware.MessageMiddleware',
         'django.middleware.clickjacking.XFrameOptionsMiddleware',
         'django.contrib.redirects.middleware.RedirectFallbackMiddleware',
+        'django.contrib.flatpages.middleware.FlatpageFallbackMiddleware',
     ]
 
     TEMPLATES = [
