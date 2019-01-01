@@ -31,7 +31,6 @@ class Base(Configuration):
         'axes',
         'compressor',
         #'rest_framework',
-        #'debug_toolbar',
 
         # Local apps, referenced via '{{ project_name }}.appname'
         '{{ project_name }}.accounts',
@@ -200,15 +199,15 @@ class Dev(Base):
     )
 
     MIDDLEWARE = Base.MIDDLEWARE + [
-        # 'debug_toolbar.middleware.DebugToolbarMiddleware',
+        'debug_toolbar.middleware.DebugToolbarMiddleware',
     ]
 
     INSTALLED_APPS = Base.INSTALLED_APPS + [
-        # 'debug_toolbar',
+        'debug_toolbar',
     ]
 
     DEBUG_TOOLBAR_CONFIG = {
-        'SHOW_TOOLBAR_CALLBACK': lambda x: True
+        'SHOW_TOOLBAR_CALLBACK': lambda x: False
     }
 
     CACHES = {
