@@ -228,6 +228,8 @@ class Prod(Base):
     STATIC_ROOT = PUBLIC_DIR.child('static')
     MEDIA_ROOT = PUBLIC_DIR.child('media')
 
+    FILE_UPLOAD_PERMISSIONS = 0o644
+
     CACHES = {
         'default': {
             'BACKEND': 'django.core.cache.backends.memcached.PyLibMCCache',
