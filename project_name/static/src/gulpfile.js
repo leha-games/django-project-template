@@ -5,19 +5,25 @@ var gulp = require('gulp'),
     sourcemaps = require('gulp-sourcemaps'),
     autoprefixer = require('autoprefixer');
 
-// Static Server + watching scss/html files
-gulp.task('serve', ['sass'], function() {
-    gulp.watch("**/*.scss", ['sass']);
-});
+var paths = {
+    styles: {
+        src: 'scss/*.scss',
+        dest: '../css'
+    }
+};
 
-// Compile sass into CSS & auto-inject into browsers
-gulp.task('sass', function() {
-    return gulp.src("scss/*.scss")
+function styles() {
+    return gulp
+        .src(paths.styles.src)
         .pipe(sourcemaps.init())
-        .pipe(sass().on('error', sass.logError))
+        .pipe(sass())
         .pipe(postcss([ autoprefixer() ]))
         .pipe(sourcemaps.write('.', {includeContent: false}))
-        .pipe(gulp.dest('../css'))
-});
+        .pipe(gulp.dest(paths.styles.dest))
+}
 
-gulp.task('default', ['serve']);
+var serve = gulp.series(styles, function() {
+    gulp.watch("**/*.scss", styles);
+})
+
+gulp.task('default', serve);
