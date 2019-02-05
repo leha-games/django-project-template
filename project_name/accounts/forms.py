@@ -23,6 +23,14 @@ class CustomUserCreationForm(forms.ModelForm):
         super(CustomUserCreationForm, self).__init__(*args, **kwargs)
         self.fields['email'].widget.attrs.update({'autofocus': ''})
 
+    
+    def clean(self):
+        cleaned_data = super(CustomUserCreationForm, self).clean()
+        email = cleaned_data.get('email')
+        if email and CustomUser.objects.filter(email__iexact=email).exists():
+            self.add_error('email', u'Пользователь с таким Email уже зарегистрирован.')
+        return cleaned_data
+
     def clean_password2(self):
         password1 = self.cleaned_data.get("password1")
         password2 = self.cleaned_data.get("password2")
