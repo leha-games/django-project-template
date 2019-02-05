@@ -12,7 +12,7 @@ djangorestframework
 envdir
 gunicorn
 setproctitle
-psycopg2
+psycopg2-binary
 Pillow
 pylibmc
 ipython
