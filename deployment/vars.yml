@@ -3,3 +3,4 @@ project_root: /var/webapps/{{ project_name }}
 project_repo: git@bitbucket.org:grialexey/{{ project_name }}.git
 server_hostname: {{ project_name }}.ru
 remote_host: bitbucket.org
+process_bind: 127.0.0.1:8000
