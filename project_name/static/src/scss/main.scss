@@ -1,0 +1,30 @@
+@import "custom";
+@import "../node_modules/bootstrap/scss/bootstrap.scss";
+
+html {
+  overflow-y: scroll; /* fixing "jump horizontally" effect */
+}
+
+:root {
+  font-size: 18px;
+
+  @include media-breakpoint-down(md) {
+    font-size: 16px;
+  }
+}
+
+body {
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+@import "blocks/page";
+@import "blocks/header";
+@import "blocks/navbar";
+@import "blocks/footer";
+
+
+.errorlist {
+  color: red;
+  margin-bottom: 0;
+}

@@ -6,12 +6,9 @@ from django.views.generic.base import TemplateView
 from django.views import defaults as default_views
 from django.contrib import admin
 from django.contrib.sitemaps.views import sitemap
+from .sitemaps import sitemaps
 
-admin.site.site_header = '{{ project_name }} administration'
-
-sitemaps = {
-
-}
+admin.site.site_header = '{{ project_name }}'
 
 urlpatterns = [
     path('', TemplateView.as_view(template_name='home.html')),

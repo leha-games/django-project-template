@@ -1,0 +1,30 @@
+{
+  "name": "frontend",
+  "version": "1.0.0",
+  "description": "frontend",
+  "main": "index.js",
+  "dependencies": {
+    "bootstrap": "*",
+    "jquery": "*",
+    "jump.js": "*",
+    "popper.js": "*"
+  },
+  "devDependencies": {
+    "autoprefixer": "*",
+    "browser-sync": "*",
+    "gulp": "*",
+    "gulp-plumber": "*",
+    "gulp-postcss": "*",
+    "gulp-sass": "*",
+    "gulp-sourcemaps": "*",
+    "gulp-watch": "*",
+    "node-sass": "*",
+    "postcss-cli": "*"
+  },
+  "scripts": {},
+  "browserslist": [
+    "last 2 versions"
+  ],
+  "author": "",
+  "license": "ISC"
+}
