@@ -49,6 +49,7 @@ class Base(Configuration):
         'django.middleware.clickjacking.XFrameOptionsMiddleware',
         'django.contrib.redirects.middleware.RedirectFallbackMiddleware',
         'django.contrib.flatpages.middleware.FlatpageFallbackMiddleware',
+        'axes.middleware.AxesMiddleware',
     ]
 
     TEMPLATES = [
@@ -121,6 +122,11 @@ class Base(Configuration):
     LOGIN_REDIRECT_URL = '/'
 
     AUTH_USER_MODEL = 'accounts.CustomUser'
+
+    AUTHENTICATION_BACKENDS = [
+        'axes.backends.AxesBackend',
+        'django.contrib.auth.backends.ModelBackend',
+    ]
 
     SITE_ID = 1
 
