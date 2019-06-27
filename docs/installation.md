@@ -81,6 +81,9 @@ Initial remote server setup
    `ansible-playbook deployment/provision.yml -i deployment/hosts/production -K`  
 8. Make first deploy of the project:  
    `ansible-playbook deployment/deploy.yml -i deployment/hosts/production -K`
+9. Obtaining an SSL certificate
+   `sudo certbot --nginx -d example.com -d www.example.com`
+   `sudo certbot renew --dry-run`
 
 
 Server setup checklist
