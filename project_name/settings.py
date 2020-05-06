@@ -6,9 +6,9 @@ from unipath import Path
 
 class Base(Configuration):
 
-    ROOT_DIR = Path(__file__).ancestor(2)
+    ROOT_DIR = Path(os.path.abspath(__file__)).ancestor(2)
 
-    PROJECT_DIR = Path(__file__).parent
+    PROJECT_DIR = Path(os.path.abspath(__file__)).parent
 
     INSTALLED_APPS = [
         # Django contrib apps
