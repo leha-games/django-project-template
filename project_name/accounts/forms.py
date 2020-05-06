@@ -28,7 +28,7 @@ class CustomUserCreationForm(forms.ModelForm):
         cleaned_data = super(CustomUserCreationForm, self).clean()
         email = cleaned_data.get('email')
         if email and CustomUser.objects.filter(email__iexact=email).exists():
-            self.add_error('email', u'Пользователь с таким Email уже зарегистрирован.')
+            self.add_error('email', _('A user with this e-mail address already exists. Try another e-mail address.'))
         return cleaned_data
 
     def clean_password2(self):
