@@ -1,7 +1,11 @@
 Django project template
 =======================
 
-This Django project template uses Vagrant and Ansible IT Infrastructure tool
+
+TODO
+----
+* Add log rotate config
+
 
 How to start a new project  
 --------------------------
