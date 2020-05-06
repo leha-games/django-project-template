@@ -191,6 +191,10 @@ class Base(Configuration):
 
     AXES_LOCKOUT_TEMPLATE = 'registration/locked.html'
 
+    IPWARE_META_PRECEDENCE_ORDER = (
+        'HTTP_X_REAL_IP',
+    )
+
 
 class Dev(Base):
     DEBUG = True
