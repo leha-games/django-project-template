@@ -100,7 +100,7 @@ class Base(Configuration):
 
     SECRET_KEY = values.Value()
 
-    LANGUAGE_CODE = 'ru-RU'
+    LANGUAGE_CODE = 'en-us'
     TIME_ZONE = 'Europe/Moscow'
     USE_I18N = True
     USE_L10N = True
@@ -223,8 +223,11 @@ class Dev(Base):
     CACHES = {
         'default': {
             'BACKEND': 'django.core.cache.backends.dummy.DummyCache',
-            # 'BACKEND': 'django.core.cache.backends.memcached.PyLibMCCache',
+            # 'BACKEND': 'django.core.cache.backends.memcached.MemcachedCache',
             # 'LOCATION': '127.0.0.1:11211',
+            # 'OPTIONS': {
+            #     'server_max_value_length': 1024 * 1024 * 10,  # size limit 10MB
+            # }
         }
     }
 
@@ -242,8 +245,11 @@ class Prod(Base):
 
     CACHES = {
         'default': {
-            'BACKEND': 'django.core.cache.backends.memcached.PyLibMCCache',
+            'BACKEND': 'django.core.cache.backends.memcached.MemcachedCache',
             'LOCATION': '127.0.0.1:11211',
+            'OPTIONS': {
+                'server_max_value_length': 1024 * 1024 * 10,  # size limit 10MB
+            }
         }
     }
 
