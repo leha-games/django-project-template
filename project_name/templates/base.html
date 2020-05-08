@@ -90,10 +90,10 @@
     {% csrf_token %}
 
     {% compress js %}
-    <script type='text/javascript' src='{% static 'libs/jquery-3.1.1.min.js' %}'></script>
-    <script type='text/javascript' src='{% static 'libs/popper.min.js' %}'></script>
-    <script type='text/javascript' src='{% static 'libs/bootstrap.min.js' %}'></script>
-    <script type='text/javascript' src='{% static 'js/script.js' %}'></script>
+    <script src='{% static 'libs/jquery-3.1.1.min.js' %}'></script>
+    <script src='{% static 'libs/popper.min.js' %}'></script>
+    <script src='{% static 'libs/bootstrap.min.js' %}'></script>
+    <script src='{% static 'js/script.js' %}'></script>
     {% endcompress %}
 
     {% compress js %}
