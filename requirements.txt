@@ -15,5 +15,6 @@ setproctitle
 psycopg2-binary
 Pillow
 pylibmc
+python-memcached
 ipython
 Unipath
